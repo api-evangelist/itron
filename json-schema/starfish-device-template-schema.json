@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/itron/json-schema/starfish-device-template-schema.json",
+  "title": "Itron Starfish Device Template",
+  "description": "Reusable sensor-shape definition that devices conform to on the Itron Starfish Data Platform.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "sensors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "unit": { "type": "string" }
+        },
+        "required": ["name", "type"]
+      }
+    }
+  }
+}

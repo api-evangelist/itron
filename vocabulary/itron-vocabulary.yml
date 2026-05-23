@@ -1,0 +1,63 @@
+name: Itron Vocabulary
+description: |
+  Domain vocabulary covering the Itron utility-technology ecosystem: smart-metering,
+  grid edge, distributed intelligence, IoT networks, analytics, and the developer
+  surface (Starfish Data Platform, IEE, IA Platform, DI SDK, Third-Party Gateway).
+url: https://github.com/api-evangelist/itron/vocabulary/itron-vocabulary.yml
+created: '2026-05-23'
+modified: '2026-05-23'
+
+terms:
+
+- term: AMI
+  definition: Advanced Metering Infrastructure — two-way communicating smart-meter networks.
+- term: AMR
+  definition: Automated Meter Reading — one-way meter-data collection.
+- term: Itron Enterprise Edition (IEE)
+  definition: Itron's Meter Data Management (MDM) platform for storing and validating meter reads.
+- term: Itron Analytics (IA Platform)
+  definition: Itron's analytics and reporting platform sitting on top of the IEE data warehouse.
+- term: Data Warehouse API
+  definition: REST/OData 4.0 query API exposing the Itron Analytics data warehouse.
+- term: Distributed Intelligence (DI)
+  definition: Edge-compute platform that runs purpose-built applications on Itron smart meters.
+- term: DI Application
+  definition: A signed application package deployed to a DI-enabled meter via the EAC.
+- term: Intelligent Connectivity (IC)
+  definition: Itron's IPv6/RF-mesh network platform plus the control software that manages device lifecycle.
+- term: Itron Networks
+  definition: Branding for Itron's connectivity products (formerly Cisco IoT FAN Solution / Field Area Network).
+- term: Network Interface Card (NIC)
+  definition: Module embedded in meters/devices to connect to the Itron RF mesh.
+- term: Edge Router
+  definition: Gateway device aggregating RF-mesh endpoints onto IP backhaul.
+- term: Access Point
+  definition: Itron RF-mesh head-end supporting thousands of devices at up to 2.4 Mbps.
+- term: Starfish Data Platform
+  definition: Itron Networked Solutions REST/SDK platform for IoT device management and observations.
+- term: Starfish Studio
+  definition: Itron's prototyping environment for IoT solution builders (partner-gated).
+- term: Itron Identity Service
+  definition: Identity provider issuing JWTs for Itron Cloud APIs using ClientID and Client Secret.
+- term: Third-Party Gateway API
+  definition: REST/JSON API bridging utility customer portals into DI program enrollment via the EAC.
+- term: Itron Enterprise Application Center (EAC)
+  definition: Service handling DI application distribution, licensing, and enrollment routing.
+- term: Consumer Energy Stream (CES)
+  definition: Streaming data product delivering meter consumption to consumer apps and third-party subscribers.
+- term: Intelligent Edge Operating System (IEOS)
+  definition: Operating system running on Itron edge devices and hosting CES and other components.
+- term: GenX
+  definition: Itron marketing umbrella for next-generation grid-edge developer platforms.
+- term: Itron Developer Program
+  definition: Partner-gated program providing SDKs, APIs, sandboxes, and go-to-market support for DI and IC.
+- term: Communicating Endpoint
+  definition: Itron's headline metric for cumulative meters, modules, and IoT devices shipped (310M+ delivered).
+- term: Endpoint Under Management
+  definition: Active meters/devices currently managed by Itron software (112M+).
+- term: Service Point
+  definition: Physical point of utility service (meter location) referenced in IA / Data Warehouse entities.
+- term: Interval Read
+  definition: Time-bucketed meter consumption sample (typically 5/15/60-minute granularity).
+- term: Revenue Class
+  definition: Billing classification of a utility account (residential, commercial, industrial).

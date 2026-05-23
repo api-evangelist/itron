@@ -1,0 +1,73 @@
+extends: [[spectral:oas, all]]
+rules:
+
+  itron-info-contact:
+    description: Itron OpenAPI specs must publish a contact pointing at the Itron Developer Program.
+    severity: error
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  itron-info-license:
+    description: Itron APIs are partner-gated; the license block must be present and named.
+    severity: warn
+    given: $.info.license
+    then:
+      field: name
+      function: truthy
+
+  itron-summary-title-case:
+    description: Every operation summary must be in Title Case (per API Evangelist house style).
+    severity: warn
+    given: $.paths.*.*.summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][A-Za-z0-9]*\s?)+$'
+
+  itron-operation-id-camel-case:
+    description: operationId values must be lowerCamelCase verbs aligned with the starfish-js SDK methods.
+    severity: error
+    given: $.paths.*.*.operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]+$'
+
+  itron-tag-known:
+    description: Tag names must be drawn from the documented Starfish resource families.
+    severity: warn
+    given: $.paths.*.*.tags[*]
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+        - Tokens
+        - Devices
+        - Observations
+        - Device Templates
+
+  itron-bearer-auth-required:
+    description: Every non-Tokens operation must require bearerAuth.
+    severity: error
+    given: "$.paths[?(!@property.match(/tokens/))].*.security"
+    then:
+      function: truthy
+
+  itron-solution-header-present:
+    description: All data-plane operations should accept the X-Starfish-Solution header so sandbox vs production can be selected (matches the SDK `solution` option).
+    severity: info
+    given: $.paths[?(!@property.match(/tokens/))].*.parameters[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(deviceId|templateId|X-Starfish-Solution)$'
+
+  itron-pagination-cursor-name:
+    description: Paginated responses must use `next_page` as the cursor field, matching the documented SDK shape.
+    severity: warn
+    given: $.components.schemas.PagedObservationList.properties
+    then:
+      field: next_page
+      function: truthy

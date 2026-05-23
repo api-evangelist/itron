@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-05-23T14:00:00Z",
+  "temperature": 42.7,
+  "accelerometer": {
+    "x": 0.012,
+    "y": -0.004,
+    "z": 1.001
+  },
+  "tags": ["substation-east", "bay-4"]
+}

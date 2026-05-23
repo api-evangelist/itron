@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "itron": "https://github.com/api-evangelist/itron/vocab#",
+
+    "Provider": "schema:Organization",
+    "Device": "sosa:Sensor",
+    "Observation": "sosa:Observation",
+    "DeviceTemplate": "ssn:SystemCapability",
+    "Sensor": "sosa:Sensor",
+    "Meter": "itron:SmartMeter",
+    "ServicePoint": "itron:ServicePoint",
+    "Account": "itron:UtilityAccount",
+    "IntervalRead": "itron:IntervalRead",
+    "EnrollmentRequest": "itron:DIEnrollmentRequest",
+    "DIApplication": "itron:DistributedIntelligenceApplication",
+    "NetworkInterfaceCard": "itron:NetworkInterfaceCard",
+    "EdgeRouter": "itron:EdgeRouter",
+    "AccessPoint": "itron:AccessPoint",
+
+    "id": "@id",
+    "type": "@type",
+    "name": "schema:name",
+    "description": "schema:description",
+    "timestamp": "sosa:resultTime",
+    "value": "sosa:hasSimpleResult",
+    "unit": "schema:unitCode",
+    "deviceType": "itron:deviceType",
+    "templateId": "itron:templateId",
+    "tags": "schema:keywords",
+    "clientId": "itron:clientId",
+    "clientSecret": "itron:clientSecret",
+    "accessToken": "itron:accessToken",
+    "expiresIn": "itron:expiresIn",
+    "solution": "itron:solutionScope"
+  }
+}

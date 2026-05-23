@@ -1,0 +1,57 @@
+name: IoT Device Onboarding
+description: |
+  Workflow capability that onboards a new IoT device to the Itron Starfish Data
+  Platform: pick or create the appropriate device template, register the device,
+  emit a heartbeat observation, then verify the observation lands in the query API.
+url: https://github.com/api-evangelist/itron/capabilities/iot-device-onboarding.yaml
+created: '2026-05-23'
+modified: '2026-05-23'
+
+uses:
+- ./shared/starfish-data-platform.yaml
+
+inputs:
+- name: deviceId
+  required: true
+- name: templateId
+  required: true
+- name: deviceName
+  required: true
+- name: tags
+  required: false
+
+steps:
+
+- id: ensureTemplate
+  description: Ensure the requested template exists; fall back to static templates if not.
+  capability: starfish-data-platform.Device Templates.getDeviceTemplates
+  on_missing: starfish-data-platform.Device Templates.getStaticTemplates
+
+- id: registerDevice
+  description: Register the device against the solution.
+  capability: starfish-data-platform.Devices.postDevice
+  body:
+    id: ${inputs.deviceId}
+    name: ${inputs.deviceName}
+    templateId: ${inputs.templateId}
+    tags: ${inputs.tags}
+
+- id: postHeartbeat
+  description: Emit an initial heartbeat observation so downstream tooling can verify ingest.
+  capability: starfish-data-platform.Observations.postDeviceObservation
+  path:
+    deviceId: ${inputs.deviceId}
+  body:
+    timestamp: ${now}
+    tags: [onboarding, heartbeat]
+
+- id: verifyIngest
+  description: Confirm the heartbeat is queryable.
+  capability: starfish-data-platform.Observations.queryDeviceObservations
+  path:
+    deviceId: ${inputs.deviceId}
+  body:
+    limit: 1
+    tags: heartbeat
+  expect:
+    minResults: 1

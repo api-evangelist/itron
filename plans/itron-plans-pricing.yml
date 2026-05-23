@@ -1,0 +1,81 @@
+name: Itron Plans & Pricing
+description: |
+  API Commons Plans 0.1 capture of Itron's commercial offering as visible from the
+  public web. Itron does not publish a self-serve developer-pricing page; all
+  developer access to the DI, IC, Starfish, IEE, IA Platform, and Third-Party
+  Gateway APIs is brokered through the Itron Developer Program (partner.itron.com)
+  after application acceptance. Commercial terms are negotiated per-utility as part
+  of enterprise contracts. The plan entries below describe access tiers as
+  documented in marketing material, with pricing recorded as `undisclosed`.
+url: https://github.com/api-evangelist/itron/plans/itron-plans-pricing.yml
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.1'
+
+provider:
+  name: Itron, Inc.
+  url: https://na.itron.com/
+  ticker: NASDAQ:ITRI
+
+plans:
+
+- name: Developer Program — Application Pending
+  description: |
+    Pre-acceptance stage. Public marketing pages, getting-started guides, and
+    partner success stories are accessible without an account. No API keys, SDK
+    downloads, or sandbox access are granted.
+  status: public
+  cost: free
+  audience: prospective developer or device-maker
+  signup: https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b
+  includes:
+  - Public developer-portal documentation
+  - Partner success stories
+  - Getting-started guides
+  excludes:
+  - API credentials
+  - DI SDK downloads
+  - Staging-network access
+
+- name: Developer Program — Develop & Test
+  description: |
+    Post-acceptance access for partners building on DI or IC. Provides SDKs, data
+    platform APIs, support forums, and a staging network. Commercial terms are
+    not public.
+  status: gated
+  cost: undisclosed
+  audience: accepted partner / ISV / device maker
+  signup: https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b
+  includes:
+  - DI SDK access via request flow (docs.itrontotal.com/DI_SDK)
+  - Intelligent Connectivity reference apps (Milli5, IoT Edge Router)
+  - Staging network
+  - Starfish Data Platform credentials (sandbox solution)
+  - Support forums
+
+- name: Commercial Deployment — Field Trial / Go-to-Market
+  description: |
+    Field-trial-ready partners gain commercial opportunities through Itron's sales
+    and marketing teams, including DI-application certification and inclusion in
+    utility procurement processes. Pricing is utility-contract specific.
+  status: contract
+  cost: undisclosed
+  audience: certified partner
+  includes:
+  - DI application certification
+  - Go-to-market support with Itron sales
+  - Production Starfish Data Platform solution
+  - Production Third-Party Gateway API access
+
+- name: Utility / Enterprise License
+  description: |
+    Itron Enterprise Edition (IEE), Itron Analytics (IA Platform), Itron Networks,
+    Total Outcomes, and DI Manager are sold as enterprise software/services to
+    utilities. Pricing is per-deployment and includes per-endpoint and per-meter
+    factors. Itron does not publish list pricing; refer to investor materials for
+    revenue context (recurring revenue and Total Outcomes ARR are reported each
+    quarter at investors.itron.com).
+  status: contract
+  cost: undisclosed
+  audience: utility / municipality
+  contact: https://na.itron.com/company/contact

@@ -1,0 +1,26 @@
+{
+  "devices": [
+    {
+      "id": "d-7f8a1c2e",
+      "name": "Substation East — Bay 4 Thermal Sensor",
+      "deviceType": "thermal-v2",
+      "templateId": "tmpl-thermal-v2",
+      "tags": ["substation-east", "thermal"],
+      "metadata": {
+        "site": "Substation East",
+        "bay": 4
+      }
+    },
+    {
+      "id": "d-a112bf30",
+      "name": "Pole 17-N Accelerometer",
+      "deviceType": "accel-3axis",
+      "templateId": "tmpl-accel-3axis",
+      "tags": ["distribution", "vibration"],
+      "metadata": {
+        "feeder": "F-17",
+        "pole": "17-N"
+      }
+    }
+  ]
+}

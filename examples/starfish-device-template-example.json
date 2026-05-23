@@ -1,0 +1,8 @@
+{
+  "id": "tmpl-thermal-v2",
+  "name": "Substation Thermal v2",
+  "sensors": [
+    { "name": "temperature", "type": "number", "unit": "C" },
+    { "name": "humidity", "type": "number", "unit": "%RH" }
+  ]
+}

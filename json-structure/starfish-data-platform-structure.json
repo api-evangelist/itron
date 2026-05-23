@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-05/schema",
+  "$id": "https://github.com/api-evangelist/itron/json-structure/starfish-data-platform-structure.json",
+  "title": "Itron Starfish Data Platform Structure",
+  "description": "JSON Structure view of the Starfish Data Platform's three core resources: Device, Observation, and Device Template.",
+  "type": "object",
+  "definitions": {
+    "Device": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "deviceType": { "type": "string" },
+        "templateId": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id"]
+    },
+    "Observation": {
+      "type": "object",
+      "properties": {
+        "timestamp": { "type": "string", "format": "date-time" },
+        "temperature": { "type": "number" },
+        "accelerometer": {
+          "type": "object",
+          "properties": {
+            "x": { "type": "number" },
+            "y": { "type": "number" },
+            "z": { "type": "number" }
+          }
+        },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["timestamp"]
+    },
+    "DeviceTemplate": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "sensors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "unit": { "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["id", "name"]
+    }
+  }
+}

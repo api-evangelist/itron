@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/itron/json-schema/starfish-device-schema.json",
+  "title": "Itron Starfish Device",
+  "description": "An IoT/sensor device registered against an Itron Starfish Data Platform solution.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the device within the solution."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable device label."
+    },
+    "deviceType": {
+      "type": "string",
+      "description": "Logical device-type identifier corresponding to a template."
+    },
+    "templateId": {
+      "type": "string",
+      "description": "Identifier of the Device Template the device conforms to."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

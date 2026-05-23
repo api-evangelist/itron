@@ -1,0 +1,466 @@
+openapi: 3.1.0
+info:
+  title: Itron Starfish Data Platform API
+  version: '1.0'
+  summary: Device and observation REST API for the Itron Networked Solutions (Starfish) Data Platform.
+  description: |
+    Reconstructed OpenAPI specification for the Itron / Itron Networked Solutions
+    (formerly Silver Spring Networks) Starfish Data Platform, based on the public
+    `starfish-js` SDK (https://github.com/silverspringnetworks/starfish-js) and the
+    Silver Spring Networks API Overview (https://developer.ssni.com/api-overview).
+
+    The Starfish Data Platform exposes three primary resources:
+
+    - **Devices** — IoT/sensor devices registered against a solution.
+    - **Observations** — Time-series sensor data emitted by those devices.
+    - **Device Templates** — Reusable shapes that describe a device's sensors.
+
+    Authentication uses OAuth 2.0 client-credentials (a long-lived `clientId` and
+    `clientSecret`) for backend integrations, or a short-lived bearer token issued
+    by the Tokens API for browser-side use.
+
+    NOTE: This spec is a best-effort reconstruction for catalog purposes; the
+    authoritative reference remains the gated Itron developer portal.
+  contact:
+    name: Itron Developer Program
+    url: https://na.itron.com/developers/
+  license:
+    name: Proprietary — Itron Partner Program
+    url: https://na.itron.com/developers/itron-developer-program
+servers:
+- url: https://api.data.sentience.ssni.com
+  description: Itron Starfish Data Platform (production)
+tags:
+- name: Tokens
+  description: OAuth 2.0 token issuance for browser-suitable, short-lived bearer tokens.
+- name: Devices
+  description: Device registration, lookup, and querying.
+- name: Observations
+  description: Time-series sensor observation ingest and query.
+- name: Device Templates
+  description: Reusable sensor-shape templates for devices.
+
+security:
+- bearerAuth: []
+
+paths:
+
+  /api/tokens:
+    post:
+      tags: [Tokens]
+      summary: Issue Short-Lived Bearer Token
+      operationId: issueToken
+      description: |
+        Exchange client credentials for a short-lived bearer token suitable for use
+        in a browser. Per SDK docs: "You can get a token directly from the Tokens API
+        using valid credentials. This token is suitable for use in a browser as it
+        is short lived."
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/devices:
+    get:
+      tags: [Devices]
+      summary: List Devices
+      operationId: getDevices
+      description: Retrieve all devices visible to the authenticated solution.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      responses:
+        '200':
+          description: Device list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      tags: [Devices]
+      summary: Register Device
+      operationId: postDevice
+      description: Register a new device against the authenticated solution.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+      responses:
+        '201':
+          description: Device created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/devices/query:
+    post:
+      tags: [Devices]
+      summary: Query Devices
+      operationId: queryDevices
+      description: Query devices by filter criteria (e.g., `deviceType`).
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceQuery'
+      responses:
+        '200':
+          description: Matching devices.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceList'
+
+  /api/devices/{deviceId}/observations:
+    parameters:
+    - $ref: '#/components/parameters/DeviceId'
+    - $ref: '#/components/parameters/SolutionHeader'
+    get:
+      tags: [Observations]
+      summary: Get Device Observations
+      operationId: getDeviceObservations
+      description: Fetch observations for a specific device.
+      responses:
+        '200':
+          description: Observation list for the device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceObservationList'
+    post:
+      tags: [Observations]
+      summary: Post Device Observation
+      operationId: postDeviceObservation
+      description: Submit sensor data for a specific device.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Observation'
+      responses:
+        '201':
+          description: Observation accepted.
+
+  /api/devices/{deviceId}/observations/query:
+    post:
+      tags: [Observations]
+      summary: Query Device Observations
+      operationId: queryDeviceObservations
+      description: Query observations for a specific device with filtering and pagination.
+      parameters:
+      - $ref: '#/components/parameters/DeviceId'
+      - $ref: '#/components/parameters/SolutionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObservationQuery'
+      responses:
+        '200':
+          description: Matching observations (paginated).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedObservationList'
+
+  /api/observations:
+    get:
+      tags: [Observations]
+      summary: Get Latest Observations
+      operationId: getObservations
+      description: Retrieve the latest observations across all devices in the solution.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      responses:
+        '200':
+          description: Latest observations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedObservationList'
+
+  /api/observations/query:
+    post:
+      tags: [Observations]
+      summary: Query Observations
+      operationId: queryObservations
+      description: |
+        Query observations across all devices. Supported filters: `limit`,
+        `after` (cursor), `from` (ISO-8601 inclusive), `to` (ISO-8601 exclusive),
+        and a single `tags` filter.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObservationQuery'
+      responses:
+        '200':
+          description: Matching observations (paginated).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedObservationList'
+
+  /api/device-templates:
+    get:
+      tags: [Device Templates]
+      summary: List Device Templates
+      operationId: getDeviceTemplates
+      description: Retrieve all device templates for the solution.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      responses:
+        '200':
+          description: Device template list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTemplateList'
+    post:
+      tags: [Device Templates]
+      summary: Create Device Template
+      operationId: postDeviceTemplate
+      description: Create a new device template.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceTemplate'
+      responses:
+        '201':
+          description: Template created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTemplate'
+
+  /api/device-templates/{templateId}:
+    parameters:
+    - $ref: '#/components/parameters/TemplateId'
+    - $ref: '#/components/parameters/SolutionHeader'
+    put:
+      tags: [Device Templates]
+      summary: Update Device Template
+      operationId: putDeviceTemplate
+      description: Update an existing device template.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceTemplate'
+      responses:
+        '200':
+          description: Template updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTemplate'
+
+  /api/device-templates/static:
+    get:
+      tags: [Device Templates]
+      summary: Get Static Device Templates
+      operationId: getStaticTemplates
+      description: Retrieve platform-provided static device templates.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      responses:
+        '200':
+          description: Static template list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTemplateList'
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Tokens API (short-lived) or obtained via OAuth client credentials.
+
+  parameters:
+    DeviceId:
+      name: deviceId
+      in: path
+      required: true
+      schema: { type: string }
+      description: Unique identifier of the device.
+    TemplateId:
+      name: templateId
+      in: path
+      required: true
+      schema: { type: string }
+      description: Unique identifier of the device template.
+    SolutionHeader:
+      name: X-Starfish-Solution
+      in: header
+      required: false
+      schema:
+        type: string
+        enum: [sandbox, production]
+        default: production
+      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
+
+  responses:
+    Unauthorized:
+      description: Missing or invalid bearer credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+
+    TokenRequest:
+      type: object
+      required: [clientId, clientSecret]
+      properties:
+        clientId: { type: string, description: OAuth client identifier. }
+        clientSecret: { type: string, description: OAuth client secret. }
+
+    TokenResponse:
+      type: object
+      required: [accessToken, expiresIn]
+      properties:
+        accessToken: { type: string }
+        tokenType: { type: string, default: Bearer }
+        expiresIn: { type: integer, description: Seconds until token expiration. }
+
+    Device:
+      type: object
+      required: [id]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        deviceType: { type: string, description: Template/type the device conforms to. }
+        templateId: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+        metadata:
+          type: object
+          additionalProperties: true
+
+    DeviceList:
+      type: object
+      properties:
+        devices:
+          type: array
+          items: { $ref: '#/components/schemas/Device' }
+
+    DeviceQuery:
+      type: object
+      properties:
+        deviceType: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+
+    Observation:
+      type: object
+      required: [timestamp]
+      properties:
+        timestamp: { type: string, format: date-time }
+        temperature: { type: number }
+        accelerometer:
+          type: object
+          properties:
+            x: { type: number }
+            y: { type: number }
+            z: { type: number }
+        tags:
+          type: array
+          items: { type: string }
+      additionalProperties: true
+
+    DeviceObservationList:
+      type: object
+      properties:
+        observations:
+          type: array
+          items: { $ref: '#/components/schemas/Observation' }
+
+    ObservationQuery:
+      type: object
+      properties:
+        limit: { type: integer, description: Max objects returned. Default 1 MB of payload. }
+        after: { type: string, description: Cursor pagination token from a previous response. }
+        from: { type: string, format: date-time, description: ISO-8601 start timestamp (inclusive). }
+        to: { type: string, format: date-time, description: ISO-8601 end timestamp (exclusive). }
+        tags: { type: string, description: Single tag filter. }
+
+    PagedObservationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Observation' }
+        next_page:
+          type: string
+          description: Cursor token to pass as `after` for the next page.
+
+    Sensor:
+      type: object
+      properties:
+        name: { type: string }
+        type: { type: string, description: Sensor data type (e.g., temperature, accelerometer). }
+        unit: { type: string }
+
+    DeviceTemplate:
+      type: object
+      required: [id, name]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        sensors:
+          type: array
+          items: { $ref: '#/components/schemas/Sensor' }
+
+    DeviceTemplateList:
+      type: object
+      properties:
+        deviceTemplates:
+          type: array
+          items: { $ref: '#/components/schemas/DeviceTemplate' }
+
+    Error:
+      type: object
+      properties:
+        code: { type: string }
+        message: { type: string }
+        details: { type: string }

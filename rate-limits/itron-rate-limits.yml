@@ -1,0 +1,62 @@
+name: Itron Rate Limits
+description: |
+  API Commons Rate Limits 0.1 capture of Itron's documented limits. Itron does not
+  publish a unified rate-limit page; the only quantitative limit visible in public
+  documentation is the Data Warehouse API's unfiltered-query cap. All other limits
+  (Starfish Data Platform, Third-Party Gateway, IEE web services) are governed by
+  per-contract SLAs negotiated through the Itron Developer Program or utility
+  enterprise agreements.
+url: https://github.com/api-evangelist/itron/rate-limits/itron-rate-limits.yml
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.1'
+
+limits:
+
+- api: Itron Analytics Data Warehouse API
+  type: result-set cap
+  scope: per-request
+  value: 10000 records
+  description: |
+    Per Itron documentation: "There are protections in place that will limit the
+    result set to 10,000 records if there are not filters in the request."
+    Callers must apply OData $filter / $select to surface complete result sets.
+  source: https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
+
+- api: Itron Starfish Data Platform
+  type: payload cap
+  scope: per-response (observations)
+  value: 1 MB default
+  description: |
+    Per the starfish-js SDK README, the `limit` parameter on observation queries
+    defaults to "Max objects returned (default: 1MB)" of payload, with cursor-based
+    pagination via `next_page`.
+  source: https://github.com/silverspringnetworks/starfish-js#readme
+
+- api: Itron Starfish Data Platform — Tokens
+  type: token TTL
+  scope: per-token
+  value: short-lived
+  description: |
+    Bearer tokens issued by /api/tokens are explicitly described as short-lived
+    and suitable for browser use. Refresh by re-calling /api/tokens with
+    clientId/clientSecret on the backend.
+  source: https://github.com/silverspringnetworks/starfish-js#readme
+
+- api: Itron Third-Party Gateway API
+  type: undocumented
+  scope: per-tenant
+  value: undisclosed
+  description: |
+    No public rate-limit documentation. Limits are governed by the partner
+    contract and the EAC service-bus queue depth.
+  source: https://docs.itrontotal.com/ThirdPartyGWAPI/Content/Topics/IntroMod.htm
+
+- api: Itron IEE Web Services
+  type: undocumented
+  scope: per-deployment
+  value: undisclosed
+  description: |
+    Legacy WCF/.asmx services sit behind utility deployments; throughput is
+    capped by the customer's installed infrastructure, not by a public quota.
+  source: https://docs.itrontotal.com/IEEOtherAPI/Content/Topics/Service%20Documentation.htm

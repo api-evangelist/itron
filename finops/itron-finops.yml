@@ -1,0 +1,95 @@
+name: Itron FinOps
+description: |
+  FinOps Framework / FOCUS-aligned view of Itron's billing surface as inferrable
+  from public material. Itron is a utility-industry enterprise vendor: nearly all
+  revenue is invoiced through multi-year utility contracts rather than metered
+  developer APIs, so the FinOps surface is dominated by capability/CapEx-style
+  line items (devices, network infrastructure, software licenses, professional
+  services) plus a growing recurring-software-and-services line (Itron Total
+  Outcomes / Itron Cloud Solutions) reported in quarterly earnings. There is no
+  public usage-based pricing for Itron APIs.
+url: https://github.com/api-evangelist/itron/finops/itron-finops.yml
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.1'
+focusVersion: '1.0'
+
+provider:
+  name: Itron, Inc.
+  url: https://na.itron.com/
+  ticker: NASDAQ:ITRI
+  investorRelations: https://investors.itron.com/
+
+billingModel:
+  primary: enterprise-contract
+  secondary: recurring-software-and-services
+  metered: false
+  selfServe: false
+
+revenueSegments:
+- name: Device Solutions
+  description: Standard metering hardware sold to utilities.
+  recurring: false
+- name: Networked Solutions
+  description: Smart metering, RF mesh networks, IIoT communication modules, software.
+  recurring: partial
+- name: Outcomes
+  description: |
+    Itron's recurring software-and-services line, including Itron Cloud, DI
+    applications, Total Outcomes for Smart Payment, and managed services.
+  recurring: true
+
+costLineItems:
+
+- service: Device Solutions
+  category: Hardware / CapEx
+  unit: device
+  invoiceTiming: project milestone
+  focusCategory: Compute / Networking Hardware
+
+- service: Itron Networks (IC / RF mesh)
+  category: Network Infrastructure
+  unit: endpoint, access point
+  invoiceTiming: deployment + multi-year support contract
+  focusCategory: Networking
+
+- service: Itron Enterprise Edition (IEE) MDM
+  category: Software License
+  unit: per-endpoint / per-tenant
+  invoiceTiming: annual subscription + maintenance
+  focusCategory: Application Subscription
+
+- service: Itron Analytics (IA Platform) + Data Warehouse API
+  category: Software License
+  unit: per-tenant
+  invoiceTiming: annual subscription
+  focusCategory: Application Subscription
+
+- service: Distributed Intelligence (DI) Applications
+  category: SaaS / Edge Application License
+  unit: per-meter, per-app
+  invoiceTiming: subscription
+  focusCategory: SaaS
+
+- service: Total Outcomes (Itron Cloud)
+  category: Recurring Services
+  unit: utility tenant / outcome
+  invoiceTiming: subscription, ARR-reported
+  focusCategory: SaaS / Outcomes-as-a-Service
+
+- service: Professional Services / Implementation
+  category: Services
+  unit: engagement
+  invoiceTiming: SOW milestone
+  focusCategory: Professional Services
+
+undisclosed:
+- All unit prices, list-rate cards, and discount schedules. Itron negotiates
+  per-utility and does not publish a developer-facing meter.
+- Per-API usage charges. None of the Itron developer APIs are sold on a
+  consumption-priced basis to outside developers.
+
+observability:
+- Quarterly revenue and segment breakdown reported via investors.itron.com.
+- Total Outcomes recurring revenue / ARR called out in each earnings release.
+- No public usage dashboard, billing API, or FOCUS-compliant export.
