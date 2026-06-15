@@ -2,6 +2,10 @@
   "repo": "itron",
   "feeds": [
     {
+      "source": "https://na.itron.com/w",
+      "error": "HTTPError"
+    },
+    {
       "source": "https://na.itron.com/w/unlock-your-iot-potential-with-itron-di-developer-program",
       "feed_url": "https://na.itron.com/w/unlock-your-iot-potential-with-itron-di-developer-program",
       "title": "",
@@ -17,5 +21,5 @@
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-01T23:35:02Z"
+  "fetched": "2026-06-14T20:42:17Z"
 }

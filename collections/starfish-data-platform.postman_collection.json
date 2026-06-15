@@ -1,0 +1,1664 @@
+{
+  "item": [
+    {
+      "id": "84bfcb1f-28cc-4258-915a-c7135c947ebe",
+      "name": "Tokens",
+      "description": {
+        "content": "OAuth 2.0 token issuance for browser-suitable, short-lived bearer tokens.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "185470d0-3763-4045-be7c-2fe187ab5a3d",
+          "name": "Issue Short-Lived Bearer Token",
+          "request": {
+            "name": "Issue Short-Lived Bearer Token",
+            "description": {
+              "content": "Exchange client credentials for a short-lived bearer token suitable for use\nin a browser. Per SDK docs: \"You can get a token directly from the Tokens API\nusing valid credentials. This token is suitable for use in a browser as it\nis short lived.\"\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac5b8f8c-f095-44a5-9290-0a8e6e33f588",
+              "name": "Token issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessToken\": \"string\",\n  \"expiresIn\": 2086,\n  \"tokenType\": \"Bearer\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6ec0d7b-a38d-46f4-b760-9d46e8425978",
+              "name": "Missing or invalid bearer credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c0d6242d-79e0-4c23-9b20-294089ab2948",
+      "name": "Devices",
+      "description": {
+        "content": "Device registration, lookup, and querying.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11d83935-b1de-4e0e-b309-188d72dbc313",
+          "name": "List Devices",
+          "request": {
+            "name": "List Devices",
+            "description": {
+              "content": "Retrieve all devices visible to the authenticated solution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4eb50623-bae1-487a-8deb-7de4db269bcd",
+              "name": "Device list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"devices\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"deviceType\": \"string\",\n      \"templateId\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"key_0\": 368.69622387566636\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"deviceType\": \"string\",\n      \"templateId\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"key_0\": 7477\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7464c8e6-c0dc-43b5-bfc0-0b49764c1958",
+              "name": "Missing or invalid bearer credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ab10846-a8a3-4458-a870-2d0ce85c76ce",
+          "name": "Register Device",
+          "request": {
+            "name": "Register Device",
+            "description": {
+              "content": "Register a new device against the authenticated solution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"deviceType\": \"<string>\",\n  \"templateId\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"key_0\": true,\n    \"key_1\": 3134.9404376827383,\n    \"key_2\": 4929.192717979132,\n    \"key_3\": 9108\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0322db70-d0a1-423b-bb5f-1cc6ba08a5f3",
+              "name": "Device created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"deviceType\": \"<string>\",\n  \"templateId\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3716,\n    \"key_2\": false,\n    \"key_3\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"deviceType\": \"string\",\n  \"templateId\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd8b601a-aa26-44e5-b2ac-4108985c350a",
+              "name": "Missing or invalid bearer credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"deviceType\": \"<string>\",\n  \"templateId\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3716,\n    \"key_2\": false,\n    \"key_3\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06dc939b-8e57-416e-813f-824240e16fc6",
+          "name": "Query Devices",
+          "request": {
+            "name": "Query Devices",
+            "description": {
+              "content": "Query devices by filter criteria (e.g., `deviceType`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "devices",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1657e684-fbad-4efc-8424-b13261b54a22",
+              "name": "Matching devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "devices",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceType\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"devices\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"deviceType\": \"string\",\n      \"templateId\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"key_0\": 368.69622387566636\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"deviceType\": \"string\",\n      \"templateId\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"metadata\": {\n        \"key_0\": 7477\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9ec7a598-6b33-4ce4-a1dd-d1d98dc0538f",
+      "name": "Observations",
+      "description": {
+        "content": "Time-series sensor observation ingest and query.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0aca084-4db9-4661-a203-9191a4327335",
+          "name": "Get Device Observations",
+          "request": {
+            "name": "Get Device Observations",
+            "description": {
+              "content": "Fetch observations for a specific device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "devices",
+                ":deviceId",
+                "observations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) Unique identifier of the device."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e8f8928-a1ff-47a5-b1ec-aa136449b8a7",
+              "name": "Observation list for the device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "devices",
+                    ":deviceId",
+                    "observations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Unique identifier of the device."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"1964-03-16T04:49:29.433Z\",\n      \"temperature\": 749.707477289715,\n      \"accelerometer\": {\n        \"x\": 9297.497555922708,\n        \"y\": 5562.2935360976935,\n        \"z\": 5690.461092990679\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"timestamp\": \"2008-02-12T13:45:51.100Z\",\n      \"temperature\": 4834.464553646297,\n      \"accelerometer\": {\n        \"x\": 3129.2711040491326,\n        \"y\": 5001.935826217947,\n        \"z\": 6936.3639412220255\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c8ba2f1-27d8-40a9-89d9-fbd91c128ff7",
+          "name": "Post Device Observation",
+          "request": {
+            "name": "Post Device Observation",
+            "description": {
+              "content": "Submit sensor data for a specific device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "devices",
+                ":deviceId",
+                "observations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) Unique identifier of the device."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timestamp\": \"<dateTime>\",\n  \"temperature\": \"<number>\",\n  \"accelerometer\": {\n    \"x\": \"<number>\",\n    \"y\": \"<number>\",\n    \"z\": \"<number>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e715fa7-56eb-48da-a28b-3d662c9d090d",
+              "name": "Observation accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "devices",
+                    ":deviceId",
+                    "observations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Unique identifier of the device."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"timestamp\": \"<dateTime>\",\n  \"temperature\": \"<number>\",\n  \"accelerometer\": {\n    \"x\": \"<number>\",\n    \"y\": \"<number>\",\n    \"z\": \"<number>\"\n  },\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7502c8ff-c3bc-4425-9142-832ebe404dae",
+          "name": "Query Device Observations",
+          "request": {
+            "name": "Query Device Observations",
+            "description": {
+              "content": "Query observations for a specific device with filtering and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "devices",
+                ":deviceId",
+                "observations",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) Unique identifier of the device."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limit\": \"<integer>\",\n  \"after\": \"<string>\",\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"tags\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e76e5aaa-1afa-4478-a799-13e131916602",
+              "name": "Matching observations (paginated).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "devices",
+                    ":deviceId",
+                    "observations",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Unique identifier of the device."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": \"<integer>\",\n  \"after\": \"<string>\",\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"tags\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"timestamp\": \"1981-05-24T07:39:23.539Z\",\n      \"temperature\": 6749.7524471813895,\n      \"accelerometer\": {\n        \"x\": 1623.7563258896082,\n        \"y\": 2777.2277296602456,\n        \"z\": 7271.461708771009\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"timestamp\": \"1947-10-07T01:52:26.718Z\",\n      \"temperature\": 1540.4610878901747,\n      \"accelerometer\": {\n        \"x\": 1814.1734278565013,\n        \"y\": 5981.934873802811,\n        \"z\": 9283.474016454833\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"next_page\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e193692c-33a2-42ea-9feb-4183e844fff2",
+          "name": "Get Latest Observations",
+          "request": {
+            "name": "Get Latest Observations",
+            "description": {
+              "content": "Retrieve the latest observations across all devices in the solution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "observations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7dd3c4bf-bd2f-4650-9822-f493153624b2",
+              "name": "Latest observations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "observations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"timestamp\": \"1981-05-24T07:39:23.539Z\",\n      \"temperature\": 6749.7524471813895,\n      \"accelerometer\": {\n        \"x\": 1623.7563258896082,\n        \"y\": 2777.2277296602456,\n        \"z\": 7271.461708771009\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"timestamp\": \"1947-10-07T01:52:26.718Z\",\n      \"temperature\": 1540.4610878901747,\n      \"accelerometer\": {\n        \"x\": 1814.1734278565013,\n        \"y\": 5981.934873802811,\n        \"z\": 9283.474016454833\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"next_page\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f019e09c-8441-4674-9de3-7c5f28eb1567",
+          "name": "Query Observations",
+          "request": {
+            "name": "Query Observations",
+            "description": {
+              "content": "Query observations across all devices. Supported filters: `limit`,\n`after` (cursor), `from` (ISO-8601 inclusive), `to` (ISO-8601 exclusive),\nand a single `tags` filter.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "observations",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limit\": \"<integer>\",\n  \"after\": \"<string>\",\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"tags\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "321f952b-401b-4772-bb5c-ad4798108793",
+              "name": "Matching observations (paginated).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "observations",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": \"<integer>\",\n  \"after\": \"<string>\",\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"tags\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"timestamp\": \"1981-05-24T07:39:23.539Z\",\n      \"temperature\": 6749.7524471813895,\n      \"accelerometer\": {\n        \"x\": 1623.7563258896082,\n        \"y\": 2777.2277296602456,\n        \"z\": 7271.461708771009\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"timestamp\": \"1947-10-07T01:52:26.718Z\",\n      \"temperature\": 1540.4610878901747,\n      \"accelerometer\": {\n        \"x\": 1814.1734278565013,\n        \"y\": 5981.934873802811,\n        \"z\": 9283.474016454833\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"next_page\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c4acf0a7-d400-4e94-b59c-3e321f7bd1bb",
+      "name": "Device Templates",
+      "description": {
+        "content": "Reusable sensor-shape templates for devices.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc0a2355-214a-49bb-b3a9-717cfcb1084a",
+          "name": "List Device Templates",
+          "request": {
+            "name": "List Device Templates",
+            "description": {
+              "content": "Retrieve all device templates for the solution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "device-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf8f022e-e2df-4d7b-bb7d-ac797f6819bc",
+              "name": "Device template list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "device-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deviceTemplates\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sensors\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sensors\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd830def-2914-4e4e-ba7b-388096b52d59",
+          "name": "Create Device Template",
+          "request": {
+            "name": "Create Device Template",
+            "description": {
+              "content": "Create a new device template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "device-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sensors\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"unit\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "edc744ce-eb4f-4c65-943c-ede5ca4d4a28",
+              "name": "Template created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "device-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sensors\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"sensors\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "155f6c86-0df3-4457-b66d-53af952a780a",
+          "name": "Update Device Template",
+          "request": {
+            "name": "Update Device Template",
+            "description": {
+              "content": "Update an existing device template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "device-templates",
+                ":templateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templateId",
+                  "description": "(Required) Unique identifier of the device template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sensors\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"unit\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "34c8a4e8-5dd0-42fa-8c5d-e54a23ae5bb8",
+              "name": "Template updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "device-templates",
+                    ":templateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) Unique identifier of the device template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sensors\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"sensors\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96a490ad-95b1-4192-9c05-5fbf5013cb06",
+          "name": "Get Static Device Templates",
+          "request": {
+            "name": "Get Static Device Templates",
+            "description": {
+              "content": "Retrieve platform-provided static device templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "device-templates",
+                "static"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f45ebe67-fc0b-4614-86ee-d3350cc44a8c",
+              "name": "Static template list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "device-templates",
+                    "static"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deviceTemplates\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sensors\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sensors\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.data.sentience.ssni.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "58a2add4-d82d-48c8-9173-ebc7b4d7ab47",
+    "name": "Itron Starfish Data Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reconstructed OpenAPI specification for the Itron / Itron Networked Solutions\n(formerly Silver Spring Networks) Starfish Data Platform, based on the public\n`starfish-js` SDK (https://github.com/silverspringnetworks/starfish-js) and the\nSilver Spring Networks API Overview (https://developer.ssni.com/api-overview).\n\nThe Starfish Data Platform exposes three primary resources:\n\n- **Devices** — IoT/sensor devices registered against a solution.\n- **Observations** — Time-series sensor data emitted by those devices.\n- **Device Templates** — Reusable shapes that describe a device's sensors.\n\nAuthentication uses OAuth 2.0 client-credentials (a long-lived `clientId` and\n`clientSecret`) for backend integrations, or a short-lived bearer token issued\nby the Tokens API for browser-side use.\n\nNOTE: This spec is a best-effort reconstruction for catalog purposes; the\nauthoritative reference remains the gated Itron developer portal.\n\n\nContact Support:\n Name: Itron Developer Program",
+      "type": "text/plain"
+    }
+  }
+}
