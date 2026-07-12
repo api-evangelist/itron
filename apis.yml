@@ -268,6 +268,10 @@ apis:
     url: https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b
 
 common:
+- type: DomainSecurity
+  url: security/itron-domain-security.yml
+- type: Authentication
+  url: authentication/itron-authentication.yml
 - type: Portal
   url: https://na.itron.com/
 - type: DeveloperPortal
