@@ -268,6 +268,8 @@ apis:
     url: https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b
 
 common:
+- type: AgenticAccess
+  url: agentic-access/itron-agentic-access.yml
 - type: DomainSecurity
   url: security/itron-domain-security.yml
 - type: Authentication
