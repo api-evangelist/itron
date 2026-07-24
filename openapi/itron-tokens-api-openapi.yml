@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  title: Itron Starfish Data Platform Device Templates Tokens API
+  version: '1.0'
+  summary: Device and observation REST API for the Itron Networked Solutions (Starfish) Data Platform.
+  description: 'Reconstructed OpenAPI specification for the Itron / Itron Networked Solutions
+
+    (formerly Silver Spring Networks) Starfish Data Platform, based on the public
+
+    `starfish-js` SDK (https://github.com/silverspringnetworks/starfish-js) and the
+
+    Silver Spring Networks API Overview (https://developer.ssni.com/api-overview).
+
+
+    The Starfish Data Platform exposes three primary resources:
+
+
+    - **Devices** — IoT/sensor devices registered against a solution.
+
+    - **Observations** — Time-series sensor data emitted by those devices.
+
+    - **Device Templates** — Reusable shapes that describe a device''s sensors.
+
+
+    Authentication uses OAuth 2.0 client-credentials (a long-lived `clientId` and
+
+    `clientSecret`) for backend integrations, or a short-lived bearer token issued
+
+    by the Tokens API for browser-side use.
+
+
+    NOTE: This spec is a best-effort reconstruction for catalog purposes; the
+
+    authoritative reference remains the gated Itron developer portal.
+
+    '
+  contact:
+    name: Itron Developer Program
+    url: https://na.itron.com/developers/
+  license:
+    name: Proprietary — Itron Partner Program
+    url: https://na.itron.com/developers/itron-developer-program
+servers:
+- url: https://api.data.sentience.ssni.com
+  description: Itron Starfish Data Platform (production)
+security:
+- bearerAuth: []
+tags:
+- name: Tokens
+  description: OAuth 2.0 token issuance for browser-suitable, short-lived bearer tokens.
+paths:
+  /api/tokens:
+    post:
+      tags:
+      - Tokens
+      summary: Issue Short-Lived Bearer Token
+      operationId: issueToken
+      description: 'Exchange client credentials for a short-lived bearer token suitable for use
+
+        in a browser. Per SDK docs: "You can get a token directly from the Tokens API
+
+        using valid credentials. This token is suitable for use in a browser as it
+
+        is short lived."
+
+        '
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    TokenRequest:
+      type: object
+      required:
+      - clientId
+      - clientSecret
+      properties:
+        clientId:
+          type: string
+          description: OAuth client identifier.
+        clientSecret:
+          type: string
+          description: OAuth client secret.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: string
+    TokenResponse:
+      type: object
+      required:
+      - accessToken
+      - expiresIn
+      properties:
+        accessToken:
+          type: string
+        tokenType:
+          type: string
+          default: Bearer
+        expiresIn:
+          type: integer
+          description: Seconds until token expiration.
+  responses:
+    Unauthorized:
+      description: Missing or invalid bearer credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Tokens API (short-lived) or obtained via OAuth client credentials.

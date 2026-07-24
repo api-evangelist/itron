@@ -1,0 +1,187 @@
+openapi: 3.1.0
+info:
+  title: Itron Starfish Data Platform Device Templates API
+  version: '1.0'
+  summary: Device and observation REST API for the Itron Networked Solutions (Starfish) Data Platform.
+  description: 'Reconstructed OpenAPI specification for the Itron / Itron Networked Solutions
+
+    (formerly Silver Spring Networks) Starfish Data Platform, based on the public
+
+    `starfish-js` SDK (https://github.com/silverspringnetworks/starfish-js) and the
+
+    Silver Spring Networks API Overview (https://developer.ssni.com/api-overview).
+
+
+    The Starfish Data Platform exposes three primary resources:
+
+
+    - **Devices** — IoT/sensor devices registered against a solution.
+
+    - **Observations** — Time-series sensor data emitted by those devices.
+
+    - **Device Templates** — Reusable shapes that describe a device''s sensors.
+
+
+    Authentication uses OAuth 2.0 client-credentials (a long-lived `clientId` and
+
+    `clientSecret`) for backend integrations, or a short-lived bearer token issued
+
+    by the Tokens API for browser-side use.
+
+
+    NOTE: This spec is a best-effort reconstruction for catalog purposes; the
+
+    authoritative reference remains the gated Itron developer portal.
+
+    '
+  contact:
+    name: Itron Developer Program
+    url: https://na.itron.com/developers/
+  license:
+    name: Proprietary — Itron Partner Program
+    url: https://na.itron.com/developers/itron-developer-program
+servers:
+- url: https://api.data.sentience.ssni.com
+  description: Itron Starfish Data Platform (production)
+security:
+- bearerAuth: []
+tags:
+- name: Device Templates
+  description: Reusable sensor-shape templates for devices.
+paths:
+  /api/device-templates:
+    get:
+      tags:
+      - Device Templates
+      summary: List Device Templates
+      operationId: getDeviceTemplates
+      description: Retrieve all device templates for the solution.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      responses:
+        '200':
+          description: Device template list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTemplateList'
+    post:
+      tags:
+      - Device Templates
+      summary: Create Device Template
+      operationId: postDeviceTemplate
+      description: Create a new device template.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceTemplate'
+      responses:
+        '201':
+          description: Template created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTemplate'
+  /api/device-templates/{templateId}:
+    parameters:
+    - $ref: '#/components/parameters/TemplateId'
+    - $ref: '#/components/parameters/SolutionHeader'
+    put:
+      tags:
+      - Device Templates
+      summary: Update Device Template
+      operationId: putDeviceTemplate
+      description: Update an existing device template.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceTemplate'
+      responses:
+        '200':
+          description: Template updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTemplate'
+  /api/device-templates/static:
+    get:
+      tags:
+      - Device Templates
+      summary: Get Static Device Templates
+      operationId: getStaticTemplates
+      description: Retrieve platform-provided static device templates.
+      parameters:
+      - $ref: '#/components/parameters/SolutionHeader'
+      responses:
+        '200':
+          description: Static template list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTemplateList'
+components:
+  schemas:
+    DeviceTemplateList:
+      type: object
+      properties:
+        deviceTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceTemplate'
+    DeviceTemplate:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sensor'
+    Sensor:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          description: Sensor data type (e.g.
+          temperature: null
+          accelerometer).: null
+        unit:
+          type: string
+  parameters:
+    TemplateId:
+      name: templateId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the device template.
+    SolutionHeader:
+      name: X-Starfish-Solution
+      in: header
+      required: false
+      schema:
+        type: string
+        enum:
+        - sandbox
+        - production
+        default: production
+      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token issued by the Tokens API (short-lived) or obtained via OAuth client credentials.
