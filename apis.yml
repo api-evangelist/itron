@@ -21,6 +21,19 @@ description: |
   sandboxes is brokered through partner.itron.com after program acceptance. The
   developer.itron.com hostname now redirects to na.itron.com/developers/.
 url: https://github.com/api-evangelist/itron
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://kinlane-productions2.s3.amazonaws.com/api-evangelist-site/api-evangelist-icon.jpg
 created: '2026-05-22'
 modified: '2026-05-23'
@@ -51,14 +64,18 @@ tags:
 - NASDAQ ITRI
 
 apis:
-
 - name: Itron Distributed Intelligence (DI) Platform
-  description: |
+  description: >
     Partner-gated platform for building purpose-built applications that execute on
+
     Itron-DI-enabled electric meters at the grid edge. Itron describes DI as moving
+
     "grid analysis, decision-making and control to the grid's edge, resulting in
+
     significantly reduced latency, greatly improved situational awareness, more
+
     accurate analysis and advanced event detection." A DI SDK (request-gated) and
+
     a Third-Party Gateway REST API support the build/sign/deploy/enroll lifecycle.
   humanURL: https://na.itron.com/developers/distributed-intelligence
   baseURL: https://partner.itron.com/
@@ -81,16 +98,22 @@ apis:
     url: https://na.itron.com/w/unlock-your-iot-potential-with-itron-di-developer-program
   - type: Blog
     url: https://na.itron.com/w/unlock-your-iot-potential-with-itron-di-developer-program
-
 - name: Itron Intelligent Connectivity (IC) Platform
-  description: |
+  description: >
     The IC platform combines Itron's IPv6-enabled RF mesh Network Platform with a
+
     Control Platform that manages the lifecycle of connected devices. Itron describes
+
     it as "an open, standards-based IPv6-enabled wireless network that provides
+
     unsurpassed, ubiquitous coverage," with Access Points supporting thousands of
+
     devices at data rates up to 2.4 Mbps. Developers integrate via the Network
+
     Interface Card (NIC) or Edge Router. Underlying CoAP sample apps and the
+
     Milli5 sensor reference designs are published in the Itron Networked Solutions
+
     GitHub org.
   humanURL: https://na.itron.com/developers/intelligent-connectivity
   baseURL: https://partner.itron.com/
@@ -110,54 +133,23 @@ apis:
     url: https://github.com/silverspringnetworks
   - type: CodeExamples
     url: https://github.com/silverspringnetworks/developer_program
-
-- name: Itron Starfish Data Platform API
-  description: |
-    REST-based device-and-observation API inherited from the Silver Spring Networks
-    acquisition, now branded under Itron Networked Solutions. Exposes Devices,
-    Observations, and Device Templates resources with OAuth 2.0 client-credentials
-    authentication, plus a short-lived browser token flow via the Tokens API.
-    A first-party JavaScript SDK (`starfish-sdk` on npm) wraps all operations.
-    This is the only Itron API with a publicly published SDK and README-grade
-    reference material; the spec below is reconstructed from the SDK source.
-  humanURL: https://developer.ssni.com/api-overview
-  baseURL: https://api.data.sentience.ssni.com/
-  tags:
-  - Starfish
-  - Silver Spring Networks
-  - Data Platform
-  - IoT
-  - Devices
-  - Observations
-  - OAuth
-  properties:
-  - type: OpenAPI
-    url: openapi/starfish-data-platform-openapi.yml
-  - type: SDKs
-    url: https://github.com/silverspringnetworks/starfish-js
-    name: starfish-sdk (JavaScript / Node)
-  - type: APIReference
-    url: https://developer.ssni.com/api-overview
-  - type: Documentation
-    url: https://developer.ssni.com/api-overview
-  - type: GitHubRepository
-    url: https://github.com/silverspringnetworks/starfish-js
-  - type: CodeExamples
-    url: https://github.com/silverspringnetworks/starfish-js#readme
-  - type: Authentication
-    url: https://developer.ssni.com/api-overview
-    name: OAuth 2.0 (client credentials) + short-lived Tokens API for browsers
-
 - name: Itron Analytics Data Warehouse API
-  description: |
+  description: >
     REST-based OData 4.0 query API exposing the Itron Analytics data warehouse for
+
     Itron Enterprise Edition / IA Platform tenants. Authentication uses a JWT
+
     obtained from the Itron Identity Service with a 36-character ClientID and a
+
     32-character Client Secret. The service documents protections that "will limit
+
     the result set to 10,000 records if there are not filters in the request" and
+
     supports OData filter/select/expand semantics over interval reads, accounts,
+
     service points, and related entities.
-  humanURL: https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
+  humanURL: >-
+    https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
   baseURL: https://docs.itrontotal.com/IAPlatform/
   tags:
   - Itron Analytics
@@ -167,21 +159,28 @@ apis:
   - Itron Enterprise Edition
   properties:
   - type: Documentation
-    url: https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
+    url: >-
+      https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
   - type: Authentication
-    url: https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
+    url: >-
+      https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
     name: JWT via Itron Identity Service (ClientID + Client Secret)
   - type: RateLimits
-    url: https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
+    url: >-
+      https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm
     name: Unfiltered queries capped at 10,000 records
-
 - name: Itron Third-Party Gateway API
-  description: |
+  description: >
     REST/JSON API that enables utility customer portals to enroll consumers into
+
     Distributed Intelligence (DI) programs by forwarding requests into the Itron
+
     Enterprise Application Center (EAC) and orchestrating service-bus queues for
+
     request/response/notification handling, application downloads, and licensing.
+
     Authentication uses Itron Identity client credentials and an AAA
+
     (authentication, authorization, accounting) framework.
   humanURL: https://docs.itrontotal.com/ThirdPartyGWAPI/Content/Topics/IntroMod.htm
   baseURL: https://docs.itrontotal.com/ThirdPartyGWAPI/
@@ -197,13 +196,16 @@ apis:
   - type: Authentication
     url: https://docs.itrontotal.com/ThirdPartyGWAPI/Content/Topics/IntroMod.htm
     name: Itron Identity (Client ID + Client Secret) with AAA
-
 - name: Itron IEE Web Services
-  description: |
+  description: >
     Legacy web-service surface for Itron Enterprise Edition (IEE) Meter Data
+
     Management. Documented as a mix of WCF services (with annotated WSDL and XSD
+
     files shipped in the installation's `bin\ServiceMetadata` directory) and older
+
     .asmx ASP.NET web services. Per-service PDF API guides are distributed through
+
     the gated Itron Customer Center rather than a public developer portal.
   humanURL: https://docs.itrontotal.com/IEEOtherAPI/Content/Topics/Service%20Documentation.htm
   baseURL: https://docs.itrontotal.com/IEEOtherAPI/
@@ -220,15 +222,20 @@ apis:
     url: https://docs.itrontotal.com/IEEOtherAPI/Content/Topics/Service%20Documentation.htm
   - type: APIReference
     url: https://customer.itron.com/
-
 - name: Itron Consumer Energy Stream (CES) API
-  description: |
+  description: >
     Itron describes Consumer Energy Stream as a data product that allows electricity
+
     meter consumption data "from a consumer's meter to stream to an Itron-authenticated
+
     receiver over the consumer's internet connection and wireless network to a
+
     utility's consumer application and third-party data subscribers who offer products
+
     and services to consumers." CES is delivered as a component of the Intelligent
+
     Edge Operating System (IEOS) and exposes its own APIs documented inside the
+
     Itron Total help center.
   humanURL: https://docs.itrontotal.com/CES_API/Content/Topics/Intro_CES.htm
   baseURL: https://docs.itrontotal.com/CES_API/
@@ -244,14 +251,18 @@ apis:
     url: https://docs.itrontotal.com/CES_API/Content/Topics/Intro_CES.htm
   - type: APIReference
     url: https://docs.itrontotal.com/CES_API/Content/Topics/Intro_CES.htm
-
 - name: Itron GenX / Starfish Studio
-  description: |
+  description: >
     GenX is the marketing umbrella under which Itron positions next-generation
+
     grid-edge solutions for developer partners; Starfish Studio is a related
+
     sandbox/prototyping surface for IoT solution builders. As of May 2026 the
+
     Starfish Studio landing page (na.itron.com/developers/starfish-studio) returns
+
     a 404, and program details — sample apps, sandboxes, certifications — are
+
     accessible only after partner-program acceptance.
   humanURL: https://na.itron.com/developers/itron-developer-program
   baseURL: https://partner.itron.com/
@@ -266,7 +277,94 @@ apis:
     url: https://na.itron.com/developers/itron-developer-program
   - type: Signup
     url: https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b
-
+- aid: itron:itron-device-templates-api
+  name: Itron Device Templates API
+  description: Reusable sensor-shape templates for devices.
+  humanURL: https://na.itron.com/developers/distributed-intelligence
+  baseURL: https://partner.itron.com/
+  tags:
+  - Device Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/itron-device-templates-api-openapi.yml
+  - type: SDKs
+    url: https://github.com/silverspringnetworks/starfish-js
+  - type: APIReference
+    url: https://developer.ssni.com/api-overview
+  - type: Documentation
+    url: https://developer.ssni.com/api-overview
+  - type: GitHubRepository
+    url: https://github.com/silverspringnetworks/starfish-js
+  - type: CodeExamples
+    url: https://github.com/silverspringnetworks/starfish-js#readme
+  - type: Authentication
+    url: https://developer.ssni.com/api-overview
+- aid: itron:itron-devices-api
+  name: Itron Devices API
+  description: Device registration, lookup, and querying.
+  humanURL: https://na.itron.com/developers/distributed-intelligence
+  baseURL: https://partner.itron.com/
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/itron-devices-api-openapi.yml
+  - type: SDKs
+    url: https://github.com/silverspringnetworks/starfish-js
+  - type: APIReference
+    url: https://developer.ssni.com/api-overview
+  - type: Documentation
+    url: https://developer.ssni.com/api-overview
+  - type: GitHubRepository
+    url: https://github.com/silverspringnetworks/starfish-js
+  - type: CodeExamples
+    url: https://github.com/silverspringnetworks/starfish-js#readme
+  - type: Authentication
+    url: https://developer.ssni.com/api-overview
+- aid: itron:itron-observations-api
+  name: Itron Observations API
+  description: Time-series sensor observation ingest and query.
+  humanURL: https://na.itron.com/developers/distributed-intelligence
+  baseURL: https://partner.itron.com/
+  tags:
+  - Observations
+  properties:
+  - type: OpenAPI
+    url: openapi/itron-observations-api-openapi.yml
+  - type: SDKs
+    url: https://github.com/silverspringnetworks/starfish-js
+  - type: APIReference
+    url: https://developer.ssni.com/api-overview
+  - type: Documentation
+    url: https://developer.ssni.com/api-overview
+  - type: GitHubRepository
+    url: https://github.com/silverspringnetworks/starfish-js
+  - type: CodeExamples
+    url: https://github.com/silverspringnetworks/starfish-js#readme
+  - type: Authentication
+    url: https://developer.ssni.com/api-overview
+- aid: itron:itron-tokens-api
+  name: Itron Tokens API
+  description: OAuth 2.0 token issuance for browser-suitable, short-lived bearer tokens.
+  humanURL: https://na.itron.com/developers/distributed-intelligence
+  baseURL: https://partner.itron.com/
+  tags:
+  - Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/itron-tokens-api-openapi.yml
+  - type: SDKs
+    url: https://github.com/silverspringnetworks/starfish-js
+  - type: APIReference
+    url: https://developer.ssni.com/api-overview
+  - type: Documentation
+    url: https://developer.ssni.com/api-overview
+  - type: GitHubRepository
+    url: https://github.com/silverspringnetworks/starfish-js
+  - type: CodeExamples
+    url: https://github.com/silverspringnetworks/starfish-js#readme
+  - type: Authentication
+    url: https://developer.ssni.com/api-overview
 common:
 - type: AgenticAccess
   url: agentic-access/itron-agentic-access.yml
