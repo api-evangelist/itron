@@ -1,0 +1,20 @@
+{
+  "provider": "itron",
+  "sources": [
+    "itron-device-templates-api-openapi.yml",
+    "itron-devices-api-openapi.yml",
+    "itron-observations-api-openapi.yml",
+    "itron-tokens-api-openapi.yml"
+  ],
+  "outputs": [
+    "itron-device-templates-api-openapi.yml",
+    "itron-devices-api-openapi.yml",
+    "itron-observations-api-openapi.yml",
+    "itron-tokens-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
