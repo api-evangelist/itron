@@ -366,6 +366,10 @@ apis:
   - type: Authentication
     url: https://developer.ssni.com/api-overview
 common:
+- type: IssueTracker
+  url: https://github.com/silverspringnetworks/starfish-js/issues
+- type: Releases
+  url: https://github.com/silverspringnetworks/starfish-js/releases
 - type: AgenticAccess
   url: agentic-access/itron-agentic-access.yml
 - type: DomainSecurity
@@ -418,8 +422,6 @@ common:
   url: rate-limits/itron-rate-limits.yml
 - type: FinOps
   url: finops/itron-finops.yml
-- type: Capabilities
-  url: capabilities/
 - type: Vocabulary
   url: vocabulary/itron-vocabulary.yml
 - type: JSONLD
