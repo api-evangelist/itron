@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Itron Starfish Data Platform Device Templates Observations API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Observations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.data.sentience.ssni.com/api/devices/:deviceId/observations",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the device."
+              }
+            ]
+          },
+          "docs": "Fetch observations for a specific device."
+        },
+        {
+          "info": {
+            "name": "Post Device Observation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.data.sentience.ssni.com/api/devices/:deviceId/observations",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the device."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit sensor data for a specific device."
+        },
+        {
+          "info": {
+            "name": "Query Device Observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.data.sentience.ssni.com/api/devices/:deviceId/observations/query",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the device."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query observations for a specific device with filtering and pagination."
+        },
+        {
+          "info": {
+            "name": "Get Latest Observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.data.sentience.ssni.com/api/observations",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve the latest observations across all devices in the solution."
+        },
+        {
+          "info": {
+            "name": "Query Observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.data.sentience.ssni.com/api/observations/query",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query observations across all devices. Supported filters: `limit`,\n`after` (cursor), `from` (ISO-8601 inclusive), `to` (ISO-8601 exclusive),\nand a single `tags` filter.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

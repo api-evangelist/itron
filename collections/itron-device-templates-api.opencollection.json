@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Itron Starfish Data Platform Device Templates API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Device Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.data.sentience.ssni.com/api/device-templates",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve all device templates for the solution."
+        },
+        {
+          "info": {
+            "name": "Create Device Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.data.sentience.ssni.com/api/device-templates",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new device template."
+        },
+        {
+          "info": {
+            "name": "Update Device Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.data.sentience.ssni.com/api/device-templates/:templateId",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the device template."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing device template."
+        },
+        {
+          "info": {
+            "name": "Get Static Device Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.data.sentience.ssni.com/api/device-templates/static",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve platform-provided static device templates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

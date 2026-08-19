@@ -1,0 +1,194 @@
+{
+  "item": [
+    {
+      "id": "a01cf040-3127-4177-83db-ab1642f5e6f2",
+      "name": "Tokens",
+      "description": {
+        "content": "OAuth 2.0 token issuance for browser-suitable, short-lived bearer tokens.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53196e87-2a36-48c0-84ce-5411ab56eef4",
+          "name": "Issue Short-Lived Bearer Token",
+          "request": {
+            "name": "Issue Short-Lived Bearer Token",
+            "description": {
+              "content": "Exchange client credentials for a short-lived bearer token suitable for use\nin a browser. Per SDK docs: \"You can get a token directly from the Tokens API\nusing valid credentials. This token is suitable for use in a browser as it\nis short lived.\"\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7a7347c6-3ed2-42d9-8651-5c673b2e4998",
+              "name": "Token issued.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accessToken\": \"string\",\n  \"expiresIn\": 6917,\n  \"tokenType\": \"Bearer\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6c457b0-0f68-4362-a9db-3e7b34cff170",
+              "name": "Missing or invalid bearer credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"<string>\",\n  \"clientSecret\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"details\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.data.sentience.ssni.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4349011c-8cf2-47d8-84cb-492dc952593b",
+    "name": "Itron Starfish Data Platform Device Templates Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reconstructed OpenAPI specification for the Itron / Itron Networked Solutions\n(formerly Silver Spring Networks) Starfish Data Platform, based on the public\n`starfish-js` SDK (https://github.com/silverspringnetworks/starfish-js) and the\nSilver Spring Networks API Overview (https://developer.ssni.com/api-overview).\n\nThe Starfish Data Platform exposes three primary resources:\n\n- **Devices** — IoT/sensor devices registered against a solution.\n- **Observations** — Time-series sensor data emitted by those devices.\n- **Device Templates** — Reusable shapes that describe a device's sensors.\n\nAuthentication uses OAuth 2.0 client-credentials (a long-lived `clientId` and\n`clientSecret`) for backend integrations, or a short-lived bearer token issued\nby the Tokens API for browser-side use.\n\nNOTE: This spec is a best-effort reconstruction for catalog purposes; the\nauthoritative reference remains the gated Itron developer portal.\n\n\nContact Support:\n Name: Itron Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

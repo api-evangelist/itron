@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Itron Starfish Data Platform Device Templates Tokens API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issue Short-Lived Bearer Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.data.sentience.ssni.com/api/tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange client credentials for a short-lived bearer token suitable for use\nin a browser. Per SDK docs: \"You can get a token directly from the Tokens API\nusing valid credentials. This token is suitable for use in a browser as it\nis short lived.\"\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

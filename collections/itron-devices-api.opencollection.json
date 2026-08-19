@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Itron Starfish Data Platform Device Templates Devices API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.data.sentience.ssni.com/api/devices",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve all devices visible to the authenticated solution."
+        },
+        {
+          "info": {
+            "name": "Register Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.data.sentience.ssni.com/api/devices",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new device against the authenticated solution."
+        },
+        {
+          "info": {
+            "name": "Query Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.data.sentience.ssni.com/api/devices/query",
+            "headers": [
+              {
+                "name": "X-Starfish-Solution",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query devices by filter criteria (e.g., `deviceType`)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

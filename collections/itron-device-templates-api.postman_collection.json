@@ -1,0 +1,471 @@
+{
+  "item": [
+    {
+      "id": "e90f7513-d1e7-432b-b2d4-2b8e46c0f516",
+      "name": "Device Templates",
+      "description": {
+        "content": "Reusable sensor-shape templates for devices.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b23a5208-7c59-40af-b498-cc113f9612e2",
+          "name": "List Device Templates",
+          "request": {
+            "name": "List Device Templates",
+            "description": {
+              "content": "Retrieve all device templates for the solution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "device-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "615fe7a3-3db6-44b7-89df-c3bd8620353e",
+              "name": "Device template list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "device-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deviceTemplates\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sensors\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sensors\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80438098-9050-4fda-a7a1-922515045f32",
+          "name": "Create Device Template",
+          "request": {
+            "name": "Create Device Template",
+            "description": {
+              "content": "Create a new device template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "device-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sensors\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"unit\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ec2f439-7062-40e4-a9a5-917114a56740",
+              "name": "Template created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "device-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sensors\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"sensors\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16815565-bb45-41ab-a3ed-944e23500250",
+          "name": "Update Device Template",
+          "request": {
+            "name": "Update Device Template",
+            "description": {
+              "content": "Update an existing device template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "device-templates",
+                ":templateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templateId",
+                  "description": "(Required) Unique identifier of the device template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sensors\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"unit\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1dbd45d9-8af2-497c-b70a-0931ef7f3e36",
+              "name": "Template updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "device-templates",
+                    ":templateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templateId",
+                      "description": "(Required) Unique identifier of the device template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sensors\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"sensors\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"unit\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffa1ae0f-2e7b-4711-b4a1-082f760f99a7",
+          "name": "Get Static Device Templates",
+          "request": {
+            "name": "Get Static Device Templates",
+            "description": {
+              "content": "Retrieve platform-provided static device templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "device-templates",
+                "static"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                "key": "X-Starfish-Solution",
+                "value": "production"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acd6c887-8c98-46b4-9f06-fc242455e600",
+              "name": "Static template list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "device-templates",
+                    "static"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Selects sandbox or production solution scope, matching the SDK `solution` option.",
+                    "key": "X-Starfish-Solution",
+                    "value": "production"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deviceTemplates\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sensors\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sensors\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"unit\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.data.sentience.ssni.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ddfbeccd-555f-4798-989b-7ce2f9cfbb0f",
+    "name": "Itron Starfish Data Platform Device Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Reconstructed OpenAPI specification for the Itron / Itron Networked Solutions\n(formerly Silver Spring Networks) Starfish Data Platform, based on the public\n`starfish-js` SDK (https://github.com/silverspringnetworks/starfish-js) and the\nSilver Spring Networks API Overview (https://developer.ssni.com/api-overview).\n\nThe Starfish Data Platform exposes three primary resources:\n\n- **Devices** — IoT/sensor devices registered against a solution.\n- **Observations** — Time-series sensor data emitted by those devices.\n- **Device Templates** — Reusable shapes that describe a device's sensors.\n\nAuthentication uses OAuth 2.0 client-credentials (a long-lived `clientId` and\n`clientSecret`) for backend integrations, or a short-lived bearer token issued\nby the Tokens API for browser-side use.\n\nNOTE: This spec is a best-effort reconstruction for catalog purposes; the\nauthoritative reference remains the gated Itron developer portal.\n\n\nContact Support:\n Name: Itron Developer Program",
+      "type": "text/plain"
+    }
+  }
+}
