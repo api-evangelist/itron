@@ -21,6 +21,19 @@ description: |
   sandboxes is brokered through partner.itron.com after program acceptance. The
   developer.itron.com hostname now redirects to na.itron.com/developers/.
 url: https://github.com/api-evangelist/itron
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
