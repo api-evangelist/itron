@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Itron Starfish Data Platform Device Templates Tokens API
+  title: Itron Starfish Data Platform Tokens API
   version: '1.0'
   summary: Device and observation REST API for the Itron Networked Solutions (Starfish) Data Platform.
   description: 'Reconstructed OpenAPI specification for the Itron / Itron Networked Solutions
@@ -9,31 +9,7 @@ info:
 
     `starfish-js` SDK (https://github.com/silverspringnetworks/starfish-js) and the
 
-    Silver Spring Networks API Overview (https://developer.ssni.com/api-overview).
-
-
-    The Starfish Data Platform exposes three primary resources:
-
-
-    - **Devices** — IoT/sensor devices registered against a solution.
-
-    - **Observations** — Time-series sensor data emitted by those devices.
-
-    - **Device Templates** — Reusable shapes that describe a device''s sensors.
-
-
-    Authentication uses OAuth 2.0 client-credentials (a long-lived `clientId` and
-
-    `clientSecret`) for backend integrations, or a short-lived bearer token issued
-
-    by the Tokens API for browser-side use.
-
-
-    NOTE: This spec is a best-effort reconstruction for catalog purposes; the
-
-    authoritative reference remains the gated Itron developer portal.
-
-    '
+    Silver Spring Networks API Overview (https://developer.ssni.com/api-overview).'
   contact:
     name: Itron Developer Program
     url: https://na.itron.com/developers/
@@ -61,9 +37,7 @@ paths:
 
         using valid credentials. This token is suitable for use in a browser as it
 
-        is short lived."
-
-        '
+        is short lived."'
       security: []
       requestBody:
         required: true
@@ -81,6 +55,13 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid bearer credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     TokenRequest:
       type: object
@@ -94,15 +75,6 @@ components:
         clientSecret:
           type: string
           description: OAuth client secret.
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: string
     TokenResponse:
       type: object
       required:
@@ -117,13 +89,15 @@ components:
         expiresIn:
           type: integer
           description: Seconds until token expiration.
-  responses:
-    Unauthorized:
-      description: Missing or invalid bearer credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

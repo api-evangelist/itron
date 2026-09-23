@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Itron Starfish Data Platform Device Templates Observations API
+  title: Itron Starfish Data Platform Observations API
   version: '1.0'
   summary: Device and observation REST API for the Itron Networked Solutions (Starfish) Data Platform.
   description: 'Reconstructed OpenAPI specification for the Itron / Itron Networked Solutions
@@ -9,31 +9,7 @@ info:
 
     `starfish-js` SDK (https://github.com/silverspringnetworks/starfish-js) and the
 
-    Silver Spring Networks API Overview (https://developer.ssni.com/api-overview).
-
-
-    The Starfish Data Platform exposes three primary resources:
-
-
-    - **Devices** — IoT/sensor devices registered against a solution.
-
-    - **Observations** — Time-series sensor data emitted by those devices.
-
-    - **Device Templates** — Reusable shapes that describe a device''s sensors.
-
-
-    Authentication uses OAuth 2.0 client-credentials (a long-lived `clientId` and
-
-    `clientSecret`) for backend integrations, or a short-lived bearer token issued
-
-    by the Tokens API for browser-side use.
-
-
-    NOTE: This spec is a best-effort reconstruction for catalog purposes; the
-
-    authoritative reference remains the gated Itron developer portal.
-
-    '
+    Silver Spring Networks API Overview (https://developer.ssni.com/api-overview).'
   contact:
     name: Itron Developer Program
     url: https://na.itron.com/developers/
@@ -130,9 +106,7 @@ paths:
 
         `after` (cursor), `from` (ISO-8601 inclusive), `to` (ISO-8601 exclusive),
 
-        and a single `tags` filter.
-
-        '
+        and a single `tags` filter.'
       parameters:
       - $ref: '#/components/parameters/SolutionHeader'
       requestBody:
@@ -149,31 +123,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedObservationList'
 components:
+  parameters:
+    DeviceId:
+      name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the device.
+    SolutionHeader:
+      name: X-Starfish-Solution
+      in: header
+      required: false
+      schema:
+        type: string
+        enum:
+        - sandbox
+        - production
+        default: production
+      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
   schemas:
-    Observation:
+    DeviceObservationList:
       type: object
-      required:
-      - timestamp
       properties:
-        timestamp:
-          type: string
-          format: date-time
-        temperature:
-          type: number
-        accelerometer:
-          type: object
-          properties:
-            x:
-              type: number
-            y:
-              type: number
-            z:
-              type: number
-        tags:
+        observations:
           type: array
           items:
-            type: string
-      additionalProperties: true
+            $ref: '#/components/schemas/Observation'
     ObservationQuery:
       type: object
       properties:
@@ -204,32 +180,30 @@ components:
         next_page:
           type: string
           description: Cursor token to pass as `after` for the next page.
-    DeviceObservationList:
+    Observation:
       type: object
+      required:
+      - timestamp
       properties:
-        observations:
+        timestamp:
+          type: string
+          format: date-time
+        temperature:
+          type: number
+        accelerometer:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+            z:
+              type: number
+        tags:
           type: array
           items:
-            $ref: '#/components/schemas/Observation'
-  parameters:
-    DeviceId:
-      name: deviceId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the device.
-    SolutionHeader:
-      name: X-Starfish-Solution
-      in: header
-      required: false
-      schema:
-        type: string
-        enum:
-        - sandbox
-        - production
-        default: production
-      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
+            type: string
+      additionalProperties: true
   securitySchemes:
     bearerAuth:
       type: http
