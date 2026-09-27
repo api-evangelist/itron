@@ -22,17 +22,21 @@ description: |
   developer.itron.com hostname now redirects to na.itron.com/developers/.
 url: https://github.com/api-evangelist/itron
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - silverspringnetworks/developer_program
+    - silverspringnetworks/starfish-js
   open_source: unknown
   commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -159,6 +163,13 @@ apis:
   humanURL: https://na.itron.com/developers/intelligent-connectivity
   baseURL: https://partner.itron.com/
   tags:
+  - Intelligent Connectivity
+  - RF Mesh
+  - IPv6
+  - CoAP
+  - Industrial IoT
+  - Network Platform
+  tags_raw:
   - Intelligent Connectivity
   - RF Mesh
   - IPv6

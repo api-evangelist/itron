@@ -134,13 +134,6 @@ components:
           accelerometer).: null
         unit:
           type: string
-    DeviceTemplateList:
-      type: object
-      properties:
-        deviceTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceTemplate'
     DeviceTemplate:
       type: object
       required:
@@ -155,6 +148,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sensor'
+    DeviceTemplateList:
+      type: object
+      properties:
+        deviceTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceTemplate'
   securitySchemes:
     bearerAuth:
       type: http

@@ -55,13 +55,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid bearer credentials.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     TokenRequest:
       type: object
@@ -75,6 +68,15 @@ components:
         clientSecret:
           type: string
           description: OAuth client secret.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: string
     TokenResponse:
       type: object
       required:
@@ -89,15 +91,13 @@ components:
         expiresIn:
           type: integer
           description: Seconds until token expiration.
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid bearer credentials.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

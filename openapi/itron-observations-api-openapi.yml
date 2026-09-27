@@ -143,33 +143,6 @@ components:
         default: production
       description: Selects sandbox or production solution scope, matching the SDK `solution` option.
   schemas:
-    DeviceObservationList:
-      type: object
-      properties:
-        observations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Observation'
-    ObservationQuery:
-      type: object
-      properties:
-        limit:
-          type: integer
-          description: Max objects returned. Default 1 MB of payload.
-        after:
-          type: string
-          description: Cursor pagination token from a previous response.
-        from:
-          type: string
-          format: date-time
-          description: ISO-8601 start timestamp (inclusive).
-        to:
-          type: string
-          format: date-time
-          description: ISO-8601 end timestamp (exclusive).
-        tags:
-          type: string
-          description: Single tag filter.
     PagedObservationList:
       type: object
       properties:
@@ -204,6 +177,33 @@ components:
           items:
             type: string
       additionalProperties: true
+    ObservationQuery:
+      type: object
+      properties:
+        limit:
+          type: integer
+          description: Max objects returned. Default 1 MB of payload.
+        after:
+          type: string
+          description: Cursor pagination token from a previous response.
+        from:
+          type: string
+          format: date-time
+          description: ISO-8601 start timestamp (inclusive).
+        to:
+          type: string
+          format: date-time
+          description: ISO-8601 end timestamp (exclusive).
+        tags:
+          type: string
+          description: Single tag filter.
+    DeviceObservationList:
+      type: object
+      properties:
+        observations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Observation'
   securitySchemes:
     bearerAuth:
       type: http
