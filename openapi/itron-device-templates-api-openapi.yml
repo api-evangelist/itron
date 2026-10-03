@@ -102,38 +102,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeviceTemplateList'
 components:
-  parameters:
-    TemplateId:
-      name: templateId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the device template.
-    SolutionHeader:
-      name: X-Starfish-Solution
-      in: header
-      required: false
-      schema:
-        type: string
-        enum:
-        - sandbox
-        - production
-        default: production
-      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
   schemas:
-    Sensor:
+    DeviceTemplateList:
       type: object
       properties:
-        name:
-          type: string
-        type:
-          type: string
-          description: Sensor data type (e.g.
-          temperature: null
-          accelerometer).: null
-        unit:
-          type: string
+        deviceTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceTemplate'
     DeviceTemplate:
       type: object
       required:
@@ -148,13 +124,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sensor'
-    DeviceTemplateList:
+    Sensor:
       type: object
       properties:
-        deviceTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceTemplate'
+        name:
+          type: string
+        type:
+          type: string
+          description: Sensor data type (e.g.
+          temperature: null
+          accelerometer).: null
+        unit:
+          type: string
+  parameters:
+    SolutionHeader:
+      name: X-Starfish-Solution
+      in: header
+      required: false
+      schema:
+        type: string
+        enum:
+        - sandbox
+        - production
+        default: production
+      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
+    TemplateId:
+      name: templateId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the device template.
   securitySchemes:
     bearerAuth:
       type: http

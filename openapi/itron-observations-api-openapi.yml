@@ -123,36 +123,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PagedObservationList'
 components:
-  parameters:
-    DeviceId:
-      name: deviceId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the device.
-    SolutionHeader:
-      name: X-Starfish-Solution
-      in: header
-      required: false
-      schema:
-        type: string
-        enum:
-        - sandbox
-        - production
-        default: production
-      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
   schemas:
-    PagedObservationList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Observation'
-        next_page:
-          type: string
-          description: Cursor token to pass as `after` for the next page.
     Observation:
       type: object
       required:
@@ -177,6 +148,16 @@ components:
           items:
             type: string
       additionalProperties: true
+    PagedObservationList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Observation'
+        next_page:
+          type: string
+          description: Cursor token to pass as `after` for the next page.
     ObservationQuery:
       type: object
       properties:
@@ -204,6 +185,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Observation'
+  parameters:
+    SolutionHeader:
+      name: X-Starfish-Solution
+      in: header
+      required: false
+      schema:
+        type: string
+        enum:
+        - sandbox
+        - production
+        default: production
+      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
+    DeviceId:
+      name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the device.
   securitySchemes:
     bearerAuth:
       type: http
