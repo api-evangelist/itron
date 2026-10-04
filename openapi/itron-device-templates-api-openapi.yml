@@ -102,40 +102,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeviceTemplateList'
 components:
-  schemas:
-    DeviceTemplateList:
-      type: object
-      properties:
-        deviceTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceTemplate'
-    DeviceTemplate:
-      type: object
-      required:
-      - id
-      - name
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        sensors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Sensor'
-    Sensor:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-          description: Sensor data type (e.g.
-          temperature: null
-          accelerometer).: null
-        unit:
-          type: string
   parameters:
     SolutionHeader:
       name: X-Starfish-Solution
@@ -155,6 +121,40 @@ components:
       schema:
         type: string
       description: Unique identifier of the device template.
+  schemas:
+    Sensor:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          description: Sensor data type (e.g.
+          temperature: null
+          accelerometer).: null
+        unit:
+          type: string
+    DeviceTemplate:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        sensors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sensor'
+    DeviceTemplateList:
+      type: object
+      properties:
+        deviceTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceTemplate'
   securitySchemes:
     bearerAuth:
       type: http

@@ -56,15 +56,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: string
     TokenRequest:
       type: object
       required:
@@ -91,6 +82,15 @@ components:
         expiresIn:
           type: integer
           description: Seconds until token expiration.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid bearer credentials.
