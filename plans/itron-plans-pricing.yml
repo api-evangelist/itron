@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-23 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-05-23'
 name: Itron Plans & Pricing
 description: |
   API Commons Plans 0.1 capture of Itron's commercial offering as visible from the
@@ -79,3 +84,33 @@ plans:
   cost: undisclosed
   audience: utility / municipality
   contact: https://na.itron.com/company/contact
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Developer Program — Application Pending
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Developer Program — Develop & Test
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Commercial Deployment — Field Trial / Go-to-Market
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Utility / Enterprise License
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
