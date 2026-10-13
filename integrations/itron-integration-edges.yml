@@ -1,4 +1,23 @@
 edges:
+- partner_name: Microsoft Azure Marketplace
+  partner: microsoft-azure
+  partner_match: aggregator
+  type: marketplace
+  marketplace: azure-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Itron
+  listing_count: 7
+  apps:
+  - Temetra
+  - UtilityIQ (UIQ)
+  - Grid Operations
+  - Forecast as a Service
+  - Itron Enterprise Edition Meter Data Management
+  seller_name: Itron
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
 - partner_name: OpenADR
   partner: null
   type: contract
@@ -28,25 +47,6 @@ edges:
     - 2.0b
     detected_by: sweep-energy.py
     detected: '2026-10-13'
-- partner_name: Microsoft Azure Marketplace
-  partner: microsoft-azure
-  partner_match: aggregator
-  type: marketplace
-  marketplace: azure-marketplace
-  channel: distribution
-  relationship: platform-app
-  direction: provider-built
-  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Itron
-  listing_count: 7
-  apps:
-  - Temetra
-  - UtilityIQ (UIQ)
-  - Grid Operations
-  - Forecast as a Service
-  - Itron Enterprise Edition Meter Data Management
-  seller_name: Itron
-  detected_by: sweep-cloud-marketplaces.py
-  detected: '2026-10-13'
 generated: '2026-10-13'
 method: searched
 checked:
