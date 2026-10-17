@@ -89,18 +89,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeviceList'
 components:
-  parameters:
-    SolutionHeader:
-      name: X-Starfish-Solution
-      in: header
-      required: false
-      schema:
-        type: string
-        enum:
-        - sandbox
-        - production
-        default: production
-      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
   schemas:
     Device:
       type: object
@@ -123,6 +111,13 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    DeviceList:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
     DeviceQuery:
       type: object
       properties:
@@ -132,13 +127,6 @@ components:
           type: array
           items:
             type: string
-    DeviceList:
-      type: object
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
     Error:
       type: object
       properties:
@@ -148,6 +136,18 @@ components:
           type: string
         details:
           type: string
+  parameters:
+    SolutionHeader:
+      name: X-Starfish-Solution
+      in: header
+      required: false
+      schema:
+        type: string
+        enum:
+        - sandbox
+        - production
+        default: production
+      description: Selects sandbox or production solution scope, matching the SDK `solution` option.
   responses:
     Unauthorized:
       description: Missing or invalid bearer credentials.
