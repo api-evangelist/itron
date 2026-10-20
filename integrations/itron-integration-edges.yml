@@ -53,3 +53,6 @@ checked:
 - https://azuremarketplace.microsoft.com/
 - https://products.openadr.org/
 marketplace_apps: []
+source:
+- https://azuremarketplace.microsoft.com/
+- https://products.openadr.org/
