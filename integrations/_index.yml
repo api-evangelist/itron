@@ -47,3 +47,33 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
+- slug: itron-science-based-targets-initiative-sbti
+  label: Science Based Targets initiative (SBTi)
+  partner_name: Science Based Targets initiative (SBTi)
+  category: climate target-setting standard participation
+  type: register
+  channel: standard-directory
+  evidence: https://sciencebasedtargets.org/target-dashboard
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: SBTi Target Dashboard (sciencebasedtargets.org/target-dashboard, companies-excel.xlsx)
+    standard: Science Based Targets initiative (SBTi) corporate net-zero / near-term target standard
+    spec_file: null
+    role: sbti-company
+    registered_name: Itron Inc
+    register_id: '40009901'
+    register_country: United States of America
+    organization_type: Corporate
+    near_term_status: Validated Targets
+    net_zero_status: Commitment Removed
+    matched_domain: itron.com
+    matched_by: domain
+    signal_note: 'participation only: the company filed a commitment or had targets validated by SBTi; target status
+      is context, not a certified product (the standard certifies no API or product)'
+    detected_by: sweep-carbon-accounting-sbti-pcaf.py
+    detected: '2026-10-21'
+    identity: wikidata Q5923178 'Itron' P856 http://www.itron.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  status: not-a-workflow
+  arazzo: null
