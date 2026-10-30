@@ -1,4 +1,4 @@
-# Itron (itron)
+# Itron
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -85,311 +85,174 @@ Public OpenAPI/AsyncAPI artifacts are not published — access to specs, SDKs, a
 sandboxes is brokered through partner.itron.com after program acceptance. The
 developer.itron.com hostname now redirects to na.itron.com/developers/.
 
-**APIs.json:** [https://github.com/api-evangelist/itron](https://github.com/api-evangelist/itron)
-
-## Scope
-
-- **Type:** Index
-
-## Tags
-
-- Itron
-- Utilities
-- Smart Meters
-- Smart Grid
-- Smart Cities
-- Internet Of Things
-- IoT
-- Energy
-- Water
-- Gas
-- Electricity
-- Distributed Intelligence
-- Grid Edge
-- AMI
-- AMR
-- RF Mesh
-- IPv6
-- OData
-- Industrial IoT
-- Fortune 1000
-- NASDAQ ITRI
-
-## Timestamps
-
-- **Created:** 2026-05-22
-- **Modified:** 2026-05-23
-
-## APIs
-
-### Itron Distributed Intelligence (DI) Platform
-
-Partner-gated platform for building purpose-built applications that execute on
-Itron-DI-enabled electric meters at the grid edge. Itron describes DI as moving
-"grid analysis, decision-making and control to the grid's edge, resulting in
-significantly reduced latency, greatly improved situational awareness, more
-accurate analysis and advanced event detection." A DI SDK (request-gated) and
-a Third-Party Gateway REST API support the build/sign/deploy/enroll lifecycle.
-
-- **Human URL:** [https://na.itron.com/developers/distributed-intelligence](https://na.itron.com/developers/distributed-intelligence)
-- **Base URL:** `https://partner.itron.com/`
-
-#### Tags
-
-- Distributed Intelligence
-- Grid Edge
-- Smart Meters
-- Edge Computing
-- Partner Platform
-
-#### Properties
-
-- [Documentation](https://na.itron.com/developers/distributed-intelligence)
-- [SDK](https://docs.itrontotal.com/DI_SDK/Content/Topics/Request%20SDK%20files.htm)
-- [Developer Portal](https://na.itron.com/developers/itron-developer-program)
-- [Sign Up](https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b)
-- [Use Cases](https://na.itron.com/w/unlock-your-iot-potential-with-itron-di-developer-program)
-- [Blog](https://na.itron.com/w/unlock-your-iot-potential-with-itron-di-developer-program)
-- [Postman Collection](collections/starfish-data-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starfish-data-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Itron Intelligent Connectivity (IC) Platform
-
-The IC platform combines Itron's IPv6-enabled RF mesh Network Platform with a
-Control Platform that manages the lifecycle of connected devices. Itron describes
-it as "an open, standards-based IPv6-enabled wireless network that provides
-unsurpassed, ubiquitous coverage," with Access Points supporting thousands of
-devices at data rates up to 2.4 Mbps. Developers integrate via the Network
-Interface Card (NIC) or Edge Router. Underlying CoAP sample apps and the
-Milli5 sensor reference designs are published in the Itron Networked Solutions
-GitHub org.
-
-- **Human URL:** [https://na.itron.com/developers/intelligent-connectivity](https://na.itron.com/developers/intelligent-connectivity)
-- **Base URL:** `https://partner.itron.com/`
-
-#### Tags
-
-- Intelligent Connectivity
-- RF Mesh
-- IPv6
-- CoAP
-- IIoT
-- Network Platform
-
-#### Properties
-
-- [Documentation](https://na.itron.com/developers/intelligent-connectivity)
-- [Sign Up](https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b)
-- [GitHub Organization](https://github.com/silverspringnetworks)
-- [Code Examples](https://github.com/silverspringnetworks/developer_program)
-- [Postman Collection](collections/starfish-data-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starfish-data-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Itron Starfish Data Platform API
-
-REST-based device-and-observation API inherited from the Silver Spring Networks
-acquisition, now branded under Itron Networked Solutions. Exposes Devices,
-Observations, and Device Templates resources with OAuth 2.0 client-credentials
-authentication, plus a short-lived browser token flow via the Tokens API.
-A first-party JavaScript SDK (`starfish-sdk` on npm) wraps all operations.
-This is the only Itron API with a publicly published SDK and README-grade
-reference material; the spec below is reconstructed from the SDK source.
-
-- **Human URL:** [https://developer.ssni.com/api-overview](https://developer.ssni.com/api-overview)
-- **Base URL:** `https://api.data.sentience.ssni.com/`
-
-#### Tags
-
-- Starfish
-- Silver Spring Networks
-- Data Platform
-- IoT
-- Devices
-- Observations
-- OAuth
-
-#### Properties
-
-- [OpenAPI](openapi/starfish-data-platform-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/starfish-data-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starfish-data-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [SDK](https://github.com/silverspringnetworks/starfish-js)
-- [API Reference](https://developer.ssni.com/api-overview)
-- [Documentation](https://developer.ssni.com/api-overview)
-- [GitHub Repository](https://github.com/silverspringnetworks/starfish-js)
-- [Code Examples](https://github.com/silverspringnetworks/starfish-js#readme)
-- [Authentication](https://developer.ssni.com/api-overview)
-
-### Itron Analytics Data Warehouse API
-
-REST-based OData 4.0 query API exposing the Itron Analytics data warehouse for
-Itron Enterprise Edition / IA Platform tenants. Authentication uses a JWT
-obtained from the Itron Identity Service with a 36-character ClientID and a
-32-character Client Secret. The service documents protections that "will limit
-the result set to 10,000 records if there are not filters in the request" and
-supports OData filter/select/expand semantics over interval reads, accounts,
-service points, and related entities.
-
-- **Human URL:** [https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm](https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm)
-- **Base URL:** `https://docs.itrontotal.com/IAPlatform/`
-
-#### Tags
-
-- Itron Analytics
-- Data Warehouse
-- OData
-- Reporting
-- Itron Enterprise Edition
-
-#### Properties
-
-- [Documentation](https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm)
-- [Authentication](https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm)
-- [Rate Limits](https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm)
-- [Postman Collection](collections/starfish-data-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starfish-data-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Itron Third-Party Gateway API
-
-REST/JSON API that enables utility customer portals to enroll consumers into
-Distributed Intelligence (DI) programs by forwarding requests into the Itron
-Enterprise Application Center (EAC) and orchestrating service-bus queues for
-request/response/notification handling, application downloads, and licensing.
-Authentication uses Itron Identity client credentials and an AAA
-(authentication, authorization, accounting) framework.
-
-- **Human URL:** [https://docs.itrontotal.com/ThirdPartyGWAPI/Content/Topics/IntroMod.htm](https://docs.itrontotal.com/ThirdPartyGWAPI/Content/Topics/IntroMod.htm)
-- **Base URL:** `https://docs.itrontotal.com/ThirdPartyGWAPI/`
-
-#### Tags
-
-- Third Party Gateway
-- Distributed Intelligence
-- Enrollment
-- EAC
-- Customer Portal
-
-#### Properties
-
-- [Documentation](https://docs.itrontotal.com/ThirdPartyGWAPI/Content/Topics/IntroMod.htm)
-- [Authentication](https://docs.itrontotal.com/ThirdPartyGWAPI/Content/Topics/IntroMod.htm)
-- [Postman Collection](collections/starfish-data-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starfish-data-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Itron IEE Web Services
-
-Legacy web-service surface for Itron Enterprise Edition (IEE) Meter Data
-Management. Documented as a mix of WCF services (with annotated WSDL and XSD
-files shipped in the installation's `bin\ServiceMetadata` directory) and older
-.asmx ASP.NET web services. Per-service PDF API guides are distributed through
-the gated Itron Customer Center rather than a public developer portal.
-
-- **Human URL:** [https://docs.itrontotal.com/IEEOtherAPI/Content/Topics/Service%20Documentation.htm](https://docs.itrontotal.com/IEEOtherAPI/Content/Topics/Service%20Documentation.htm)
-- **Base URL:** `https://docs.itrontotal.com/IEEOtherAPI/`
-
-#### Tags
-
-- IEE
-- Itron Enterprise Edition
-- MDM
-- SOAP
-- WCF
-- WSDL
-- Legacy
-
-#### Properties
-
-- [Documentation](https://docs.itrontotal.com/IEEOtherAPI/Content/Topics/Service%20Documentation.htm)
-- [API Reference](https://customer.itron.com/)
-- [Postman Collection](collections/starfish-data-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starfish-data-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Itron Consumer Energy Stream (CES) API
-
-Itron describes Consumer Energy Stream as a data product that allows electricity
-meter consumption data "from a consumer's meter to stream to an Itron-authenticated
-receiver over the consumer's internet connection and wireless network to a
-utility's consumer application and third-party data subscribers who offer products
-and services to consumers." CES is delivered as a component of the Intelligent
-Edge Operating System (IEOS) and exposes its own APIs documented inside the
-Itron Total help center.
-
-- **Human URL:** [https://docs.itrontotal.com/CES_API/Content/Topics/Intro_CES.htm](https://docs.itrontotal.com/CES_API/Content/Topics/Intro_CES.htm)
-- **Base URL:** `https://docs.itrontotal.com/CES_API/`
-
-#### Tags
-
-- Consumer Energy Stream
-- CES
-- IEOS
-- Consumer Data
-- Streaming
-- Smart Meters
-
-#### Properties
-
-- [Documentation](https://docs.itrontotal.com/CES_API/Content/Topics/Intro_CES.htm)
-- [API Reference](https://docs.itrontotal.com/CES_API/Content/Topics/Intro_CES.htm)
-- [Postman Collection](collections/starfish-data-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starfish-data-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Itron GenX / Starfish Studio
-
-GenX is the marketing umbrella under which Itron positions next-generation
-grid-edge solutions for developer partners; Starfish Studio is a related
-sandbox/prototyping surface for IoT solution builders. As of May 2026 the
-Starfish Studio landing page (na.itron.com/developers/starfish-studio) returns
-a 404, and program details — sample apps, sandboxes, certifications — are
-accessible only after partner-program acceptance.
-
-- **Human URL:** [https://na.itron.com/developers/itron-developer-program](https://na.itron.com/developers/itron-developer-program)
-- **Base URL:** `https://partner.itron.com/`
-
-#### Tags
-
-- GenX
-- Starfish Studio
-- Prototyping
-- Sandbox
-- Partner Program
-
-#### Properties
-
-- [Developer Portal](https://na.itron.com/developers/itron-developer-program)
-- [Sign Up](https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b)
-- [Postman Collection](collections/starfish-data-platform.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/starfish-data-platform.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://na.itron.com/)
-- [Developer Portal](https://na.itron.com/developers/)
+**Areas:** Itron · Utilities · Smart Meter · Smart Grid · Smart Cities · IoT · Energy · Water · Gas · Electricity · Distributed Intelligence · Grid Edge
+
+## Itron on APIs.io
+
+Everything profiled for Itron is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/itron/](https://apis.io/providers/itron/)** — or go straight to one of the APIs or properties below.
+
+### APIs (11)
+
+- [Itron Distributed Intelligence (DI) Platform](https://apis.io/apis/itron/itron-distributed-intelligence-di-platform/) — Partner-gated platform for building purpose-built applications that execute on Itron-DI-enabled electric meters at the grid edge. Itron describes DI as…
+- [Itron Intelligent Connectivity (IC) Platform](https://apis.io/apis/itron/itron-intelligent-connectivity-ic-platform/) — The IC platform combines Itron's IPv6-enabled RF mesh Network Platform with a Control Platform that manages the lifecycle of connected devices. Itron…
+- [Itron Analytics Data Warehouse API](https://apis.io/apis/itron/itron-analytics-data-warehouse-api/) — REST-based OData 4.0 query API exposing the Itron Analytics data warehouse for Itron Enterprise Edition / IA Platform tenants. Authentication uses a JWT…
+- [Itron Third-Party Gateway API](https://apis.io/apis/itron/itron-third-party-gateway-api/) — REST/JSON API that enables utility customer portals to enroll consumers into Distributed Intelligence (DI) programs by forwarding requests into the Itron…
+- [Itron IEE Web Services](https://apis.io/apis/itron/itron-iee-web-services/) — Legacy web-service surface for Itron Enterprise Edition (IEE) Meter Data Management. Documented as a mix of WCF services (with annotated WSDL and XSD files…
+- [Itron Consumer Energy Stream (CES) API](https://apis.io/apis/itron/itron-consumer-energy-stream-ces-api/) — Itron describes Consumer Energy Stream as a data product that allows electricity meter consumption data "from a consumer's meter to stream to an…
+- [Itron GenX / Starfish Studio](https://apis.io/apis/itron/itron-genx-starfish-studio/) — GenX is the marketing umbrella under which Itron positions next-generation grid-edge solutions for developer partners; Starfish Studio is a related…
+- [Itron Device Templates API](https://apis.io/apis/itron/itron-device-templates-api/) — Reusable sensor-shape templates for devices.
+- [Itron Devices API](https://apis.io/apis/itron/itron-devices-api/) — Device registration, lookup, and querying.
+- [Itron Observations API](https://apis.io/apis/itron/itron-observations-api/) — Time-series sensor observation ingest and query.
+- [Itron Tokens API](https://apis.io/apis/itron/itron-tokens-api/) — OAuth 2.0 token issuance for browser-suitable, short-lived bearer tokens.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Itron Agentic Access](https://apis.io/agentic-access/itron/itron-agentic-access/)
+
+#### JSON Schema (3)
+
+The data models the API reads and writes.
+
+- [Itron Starfish Device](https://apis.io/schemas/itron/starfish-device/)
+- [Itron Starfish Device Template](https://apis.io/schemas/itron/starfish-device-template/)
+- [Itron Starfish Observation](https://apis.io/schemas/itron/starfish-observation/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Starfish Data Platform Structure](https://apis.io/json-structure/itron/starfish-data-platform-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Itron Context](https://apis.io/jsonld/itron/itron-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Itron Vocabulary](https://apis.io/vocabularies/itron/itron-vocabulary/)
+
+#### Examples (5)
+
+Example requests and responses.
+
+- [Starfish Device Template Example](https://apis.io/examples/itron/starfish-device-template-example/)
+- [Starfish List Devices Example](https://apis.io/examples/itron/starfish-list-devices-example/)
+- [Starfish Post Observation Example](https://apis.io/examples/itron/starfish-post-observation-example/)
+- [Starfish Query Observations Example](https://apis.io/examples/itron/starfish-query-observations-example/)
+- [Starfish Token Request Example](https://apis.io/examples/itron/starfish-token-request-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Itron Starfish Data Platform Device Templates API](https://apis.io/collections/itron/open-itron-device-templates-api/)
+- [Itron Starfish Data Platform Device Templates Devices API](https://apis.io/collections/itron/open-itron-devices-api/)
+- [Itron Starfish Data Platform Device Templates Observations API](https://apis.io/collections/itron/open-itron-observations-api/)
+- [Itron Starfish Data Platform Device Templates Tokens API](https://apis.io/collections/itron/open-itron-tokens-api/)
+- [Itron Starfish Data Platform API](https://apis.io/collections/itron/open-starfish-data-platform/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Itron — jsonschema rules](https://apis.io/rules/itron/itron-jsonschema-spectral-rules/)
+- [Itron — starfish data platform rules](https://apis.io/rules/itron/starfish-data-platform-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Itron Authentication](https://apis.io/security/itron/itron-authentication/)
+- [Itron Domain Security](https://apis.io/security/itron/itron-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Itron Plans Pricing](https://apis.io/plans/itron/itron-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Itron Rate Limits](https://apis.io/rate-limits/itron/itron-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Itron Finops](https://apis.io/finops/itron/itron-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.itron.com/)
 - [Documentation](https://docs.itrontotal.com/)
-- [Knowledge Center](https://customer.itron.com/)
-- [Sign Up](https://partner.itron.com/flow/af4b0f91-1acd-4c07-9425-7fb4c31ac22b)
-- [Authentication](https://docs.itrontotal.com/IAPlatform/Cloud/AdminPortal/help/Content/DataWarehouseAPI.htm)
-- [GitHub Organization](https://github.com/silverspringnetworks)
-- [GitHub Repository](https://github.com/silverspringnetworks/starfish-js)
-- [GitHub Repository](https://github.com/silverspringnetworks/developer_program)
 - [Blog](https://na.itron.com/w)
-- [Newsroom](https://na.itron.com/na/company/newsroom)
-- [Partners](https://na.itron.com/partners)
-- [Customers](https://na.itron.com/who-we-serve)
-- [Solutions](https://na.itron.com/na/solutions)
-- [LinkedIn](https://www.linkedin.com/company/itron-inc/)
-- [X (Twitter)](https://twitter.com/ItronInc)
-- [YouTube](https://www.youtube.com/user/itroninc)
-- [Glossary](https://apps.itron.com/ItronGlossary/)
-- [Investors](https://investors.itron.com/)
-- [Plans](plans/itron-plans-pricing.yml)
-- [Rate Limits](rate-limits/itron-rate-limits.yml)
-- [Fin Ops](finops/itron-finops.yml)
-- [Capabilities](capabilities/)
-- [Vocabulary](vocabulary/itron-vocabulary.yml)
-- [JSON-LD](json-ld/itron-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [GitHub](https://github.com/silverspringnetworks)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 40.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.0 |
+| Contract quality | 55.9 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 21.1 |
+
+**Agent readiness 25.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 13.9** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/itron/](https://apis.io/providers/itron/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Itron: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/itron/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
